@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>用原生JavaScript实现类jQuery效果 | mamba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这篇文章将用原生JS实现jQuery的元素选择、添加类、获取/设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。1、实现元素选择 首先我们需要认识到的是，jQuery实际上就是一个函数，所以最基本的结构应该是这样的：  123windos.jQuery = function()&amp;#123;  &amp;#125; window.$ = window.jQuery // 实现类j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用原生JavaScript实现类jQuery效果">
+<meta property="og:url" content="http://yoursite.com/2019/02/15/用原生JavaScript实现类jQuery效果/index.html">
+<meta property="og:site_name" content="mamba">
+<meta property="og:description" content="这篇文章将用原生JS实现jQuery的元素选择、添加类、获取/设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。1、实现元素选择 首先我们需要认识到的是，jQuery实际上就是一个函数，所以最基本的结构应该是这样的：  123windos.jQuery = function()&amp;#123;  &amp;#125; window.$ = window.jQuery // 实现类j">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-21T13:52:30.682Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用原生JavaScript实现类jQuery效果">
+<meta name="twitter:description" content="这篇文章将用原生JS实现jQuery的元素选择、添加类、获取/设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。1、实现元素选择 首先我们需要认识到的是，jQuery实际上就是一个函数，所以最基本的结构应该是这样的：  123windos.jQuery = function()&amp;#123;  &amp;#125; window.$ = window.jQuery // 实现类j">
+  
+    <link rel="alternate" href="/atom.xml" title="mamba" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">mamba</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-用原生JavaScript实现类jQuery效果" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/15/用原生JavaScript实现类jQuery效果/" class="article-date">
+  <time datetime="2019-02-15T05:20:29.000Z" itemprop="datePublished">2019-02-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用原生JavaScript实现类jQuery效果
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="这篇文章将用原生JS实现jQuery的元素选择、添加类、获取-设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。"><a href="#这篇文章将用原生JS实现jQuery的元素选择、添加类、获取-设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。" class="headerlink" title="这篇文章将用原生JS实现jQuery的元素选择、添加类、获取/设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。"></a>这篇文章将用原生JS实现jQuery的元素选择、添加类、获取/设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。</h3><h4 id="1、实现元素选择"><a href="#1、实现元素选择" class="headerlink" title="1、实现元素选择"></a>1、实现元素选择</h4><ul>
+<li>首先我们需要认识到的是，jQuery实际上就是一个函数，所以最基本的结构应该是这样的：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">windos.jQuery = function()&#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>window.$ = window.jQuery // 实现类jQuery写法 $()</p>
+<ul>
+<li>其次我们需要判断通过该函数传进来的参数是选择器还是DOM节点：是选择器的话，需要使用<code>document.querySelectorAll()</code>来获取元素，然后返回一个对象用来后续的操作；如果是DOM节点，为了保持操作的一致，也需要将其变为一个对象；如果先用一个变量获取DOM的集合，再将其以参数传入，也会返回一个对象（<code>var boxes = document.getElementsByTagName(‘div’)</code> ，再将boxes传入，进入最后一个分支）。具体代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = function(nodeOrSelector)&#123;</span><br><span class="line">  let nodes = &#123;&#125;</span><br><span class="line">  // 传入参数为选择器</span><br><span class="line">  if (typeof nodeOrSelector === &apos;string&apos;)&#123;</span><br><span class="line">     let temp = document.querySelectorAll(nodeOrSelector)</span><br><span class="line">     for(let i = 0 ; i &lt; temp.length; i++)&#123;</span><br><span class="line">        nodes[i] = temp[i]</span><br><span class="line">     &#125;</span><br><span class="line">    nodes[&apos;length&apos;] = temp.length</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  // 传入参数为节点</span><br><span class="line">  else if(nodeOrSelector instanceof Node)&#123;</span><br><span class="line">    nodes=&#123;</span><br><span class="line">      0:nodeOrSelector,</span><br><span class="line">      length:1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> // 传入参数为DOM节点集合</span><br><span class="line">  else&#123;</span><br><span class="line">    for(let i = 0;i&lt;nodeOrSelector.length;i++)&#123;</span><br><span class="line">      nodes[i] = nodeOrSelector[i]</span><br><span class="line">    &#125;</span><br><span class="line">    nodes[&apos;length&apos;] = nodeOrSelector.length</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return nodes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2、实现获取-设置元素的文本"><a href="#2、实现获取-设置元素的文本" class="headerlink" title="2、实现获取/设置元素的文本"></a>2、实现获取/设置元素的文本</h4><p>封装一个<code>Text()</code>函数，操作的是转化过的<code>nodes</code>对象，如果不传参，则获取元素的文本，如果传参（参数需要是字符串），设置元素的文本为所传的参数（其中，如果元素是多个节点的集合，那么会为所有的元素都设置文本）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">nodes.Text = function(text)&#123;</span><br><span class="line">   if(text === undefined)&#123;</span><br><span class="line">     let texts = []</span><br><span class="line">     for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">      texts[i] = nodes[i].textContent</span><br><span class="line">     &#125;</span><br><span class="line">     return texts</span><br><span class="line">   &#125;else&#123;</span><br><span class="line">     for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">      nodes[i].textContent = text</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3、实现为元素添加-删除类"><a href="#3、实现为元素添加-删除类" class="headerlink" title="3、实现为元素添加/删除类"></a>3、实现为元素添加/删除类</h4><p>封装一个addClass()函数，操作的转化过的nodes对象，传入的参数需要是一个对象，对象的键名是需要操作的类，对象的键值是操作类型（如<code>{‘red’:true,’green’:false}</code> 表示添加类名为<code>red</code>的类，同时删除类名为<code>green</code>的类）</p>
+<ul>
+<li>首先使用<code>for in</code>循环遍历传入的参数，然后使用<code>for循环遍历nodes</code>节点，对每一个元素都要进行操作，判断键值是<code>true还是false</code>，前者则添加类，后者则删除类：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nodes.addClass = function(classes)&#123;</span><br><span class="line">    for(let key in classes)&#123;</span><br><span class="line">      for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">        if(classes[key])&#123;</span><br><span class="line">          nodes[i].classList.add(key)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          nodes[i].classList.remove(key)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>观察上面的代码，发现关于<code>if判断语句</code>中的两个分支有相似的地方，而只要有相似的代码，就有优化的空间，所以进行下面的优化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nodes.addClass = function(classes)&#123;</span><br><span class="line">    for(let key in classes)&#123;</span><br><span class="line">      for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">        let methodName = classes[key] ? &apos;add&apos; : &apos;remove&apos;</span><br><span class="line">        nodes[i].classList[methodName](key)</span><br><span class="line">      &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="4、完整代码"><a href="#4、完整代码" class="headerlink" title="4、完整代码"></a>4、完整代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = function(nodeOrSelector) &#123;</span><br><span class="line">  let nodes = &#123;&#125;</span><br><span class="line">  if (typeof nodeOrSelector === &apos;string&apos;) &#123;</span><br><span class="line">    let temp = document.querySelectorAll(nodeOrSelector)</span><br><span class="line">    for (let i = 0; i &lt; temp.length; i++) &#123;</span><br><span class="line">      nodes[i] = temp[i]</span><br><span class="line">    &#125;</span><br><span class="line">    nodes[&apos;length&apos;] = temp.length</span><br><span class="line">    console.log(1)</span><br><span class="line"></span><br><span class="line">  &#125; else if (nodeOrSelector instanceof Node) &#123;</span><br><span class="line">    nodes = &#123;</span><br><span class="line">      0: nodeOrSelector,</span><br><span class="line">      length: 1</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(2)</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    for (let i = 0; i &lt; nodeOrSelector.length; i++) &#123;</span><br><span class="line">      nodes[i] = nodeOrSelector[i]</span><br><span class="line">    &#125;</span><br><span class="line">    nodes[&apos;length&apos;] = nodeOrSelector.length</span><br><span class="line">    console.log(3)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  nodes.Text = function(text) &#123;</span><br><span class="line">    if (text === undefined) &#123;</span><br><span class="line">      let texts = []</span><br><span class="line">      for (let i = 0; i &lt; nodes.length; i++) &#123;</span><br><span class="line">        texts[i] = nodes[i].textContent</span><br><span class="line">      &#125;</span><br><span class="line">      return texts</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      for (let i = 0; i &lt; nodes.length; i++) &#123;</span><br><span class="line">        nodes[i].textContent = text</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  nodes.addClass = function(classes) &#123;</span><br><span class="line">    for (let key in classes) &#123;</span><br><span class="line">      for (let i = 0; i &lt; nodes.length; i++) &#123;</span><br><span class="line">        let methodName = classes[key] ? &apos;add&apos; : &apos;remove&apos;</span><br><span class="line">        nodes[i].classList[methodName](key)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  return nodes</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">window.$ =jQuery</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/15/用原生JavaScript实现类jQuery效果/" data-id="cjsepaqf90007t4ur9pbj1ss7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/19/初级前端需要知道的基础知识/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          初级前端需要知道的基础知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/03/初识原型与原型链/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">初识原型与原型链</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/21/JSON-JSONP-AJAX简述/">JSON,JSONP,AJAX简述</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/19/初级前端需要知道的基础知识/">初级前端需要知道的基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/15/用原生JavaScript实现类jQuery效果/">用原生JavaScript实现类jQuery效果</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/03/初识原型与原型链/">初识原型与原型链</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/30/JS里的数据类型转换/">JS里的数据类型转换</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 张哲<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

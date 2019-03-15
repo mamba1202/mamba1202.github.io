@@ -5,23 +5,15 @@
   
 
   
-  <title>浅谈HTTP | mamba</title>
+  <title>mamba</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="了解HTTP的请求与响应  HTTP的作用就是指导浏览器和服务器如何进行沟通   浏览器负责发起请求 服务器在80端口接受请求 服务器负责返回内容（响应） 浏览器负责下载响应内容   如何使用curl命令   在命令行中输入curl -s -v -H – “https://www.baidu.com&amp;quot;，即可以创造一个请求并得到响应 请求的内容为12345&amp;gt; GET / HTTP/1">
-<meta property="og:type" content="article">
-<meta property="og:title" content="浅谈HTTP">
-<meta property="og:url" content="http://yoursite.com/2019/01/02/浅谈HTTPP/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="mamba">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="mamba">
-<meta property="og:description" content="了解HTTP的请求与响应  HTTP的作用就是指导浏览器和服务器如何进行沟通   浏览器负责发起请求 服务器在80端口接受请求 服务器负责返回内容（响应） 浏览器负责下载响应内容   如何使用curl命令   在命令行中输入curl -s -v -H – “https://www.baidu.com&amp;quot;，即可以创造一个请求并得到响应 请求的内容为12345&amp;gt; GET / HTTP/1">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/01/02/浅谈HTTPP/curl命令.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/01/02/浅谈HTTPP/请求.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/01/02/浅谈HTTPP/响应.jpg">
-<meta property="og:updated_time" content="2019-02-21T13:52:21.994Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈HTTP">
-<meta name="twitter:description" content="了解HTTP的请求与响应  HTTP的作用就是指导浏览器和服务器如何进行沟通   浏览器负责发起请求 服务器在80端口接受请求 服务器负责返回内容（响应） 浏览器负责下载响应内容   如何使用curl命令   在命令行中输入curl -s -v -H – “https://www.baidu.com&amp;quot;，即可以创造一个请求并得到响应 请求的内容为12345&amp;gt; GET / HTTP/1">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/02/浅谈HTTPP/curl命令.jpg">
+<meta name="twitter:title" content="mamba">
   
     <link rel="alternate" href="/atom.xml" title="mamba" type="application/atom+xml">
   
@@ -68,7 +60,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-浅谈HTTPP" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-浅谈HTTPP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/02/浅谈HTTPP/" class="article-date">
   <time datetime="2019-01-02T14:48:33.000Z" itemprop="datePublished">2019-01-02</time>
@@ -81,8 +75,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      浅谈HTTP
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/02/浅谈HTTPP/">浅谈HTTP</a>
     </h1>
   
 
@@ -147,28 +141,62 @@
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2019/01/05/HTML相关内容(1)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          HTML相关内容
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/12/30/git入门-1/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git入门</div>
-    </a>
-  
-</nav>
+</article>
+
 
   
+    <article id="post-git入门-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/30/git入门-1/" class="article-date">
+  <time datetime="2018-12-30T13:23:02.000Z" itemprop="datePublished">2018-12-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/30/git入门-1/">git入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>介绍 git init,git add,git commit的用法</p>
+<ol>
+<li>git init (初始化本地仓库.git)<br>a: 当你本地创建了一个工作目录，你可以进入这个目录，使用’git init’命令进行初始化<br>b: 例：我们创建一个目录作为项目目录：mkdir git-demo<br>c: 进入目录 cd git-demo<br>d: git init,这句命令会在git-demo里创建一个.git目录</li>
+</ol>
+<img src="/2018/12/30/git入门-1/QQ截图01.jpg" title="This is an QQ截图01 image">
+<ol start="2">
+<li>git add 将文件添加到【暂存区】<br>a: 你可以一个一个的add<br>git add index.html<br>b: 也可以一次性add<br>git add . 意思是把当前目录中（.表示当前目录）里面的变动都加到【暂存区】<img src="/2018/12/30/git入门-1/QQ截图02.jpg" title="This is an QQ截图02 image"></li>
+<li>git commit 用来正式提交变动,提交至.git仓库<br>git commit index.html -m ‘添加index.html<img src="/2018/12/30/git入门-1/QQ截图03.jpg" title="This is an QQ截图03 image">
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/30/git入门-1/" data-id="cjt9uy3dj0003qgury6838o06" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
 </article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         

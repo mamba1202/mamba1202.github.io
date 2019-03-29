@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="v-cloak这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如[v-cloak] { display: none  一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。  在html挂载点加上 v-cloak，就可以解决页面加载时的闪烁(编译完成时再进行页面渲染) 123456789&amp;lt;div id=&amp;quot;app&amp;quot; v-cloak&amp;gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="v-clock解决页面加载的闪烁">
 <meta property="og:url" content="http://yoursite.com/2019/03/29/v-clock解决页面加载的闪烁/index.html">
 <meta property="og:site_name" content="mamba">
+<meta property="og:description" content="v-cloak这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如[v-cloak] { display: none  一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。  在html挂载点加上 v-cloak，就可以解决页面加载时的闪烁(编译完成时再进行页面渲染) 123456789&amp;lt;div id=&amp;quot;app&amp;quot; v-cloak&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-29T00:35:05.437Z">
+<meta property="og:updated_time" content="2019-03-29T19:07:53.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="v-clock解决页面加载的闪烁">
+<meta name="twitter:description" content="v-cloak这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如[v-cloak] { display: none  一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。  在html挂载点加上 v-cloak，就可以解决页面加载时的闪烁(编译完成时再进行页面渲染) 123456789&amp;lt;div id=&amp;quot;app&amp;quot; v-cloak&amp;gt;">
 
 
 
@@ -336,7 +339,14 @@
       
 
       
-        
+        <h4 id="v-cloak"><a href="#v-cloak" class="headerlink" title="v-cloak"></a>v-cloak</h4><p>这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如<br><code>[v-cloak] { display: none </code><br> 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。</p>
+<ul>
+<li><p>在html挂载点加上 v-cloak，就可以解决页面加载时的闪烁(编译完成时再进行页面渲染)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot; v-cloak&gt;</span><br><span class="line">    &#123;&#123;msg&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">[v-cloak] &#123;</span><br><span class="line">  display: none;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="v-cloak失效的问题："><a href="#v-cloak失效的问题：" class="headerlink" title="v-cloak失效的问题："></a>v-cloak失效的问题：</h4></li>
+</ul>
+<p>如果把<code>[v-cloak]</code>样式写在@import加载的文件里很有可能失效，光是加载这个文件就需要时间，解决方法最好是 写成内联style或者link引入。</p>
+
       
     </div>
     
@@ -424,8 +434,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -440,7 +459,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -483,6 +502,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-cloak"><span class="nav-number">1.</span> <span class="nav-text">v-cloak</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-cloak失效的问题："><span class="nav-number">2.</span> <span class="nav-text">v-cloak失效的问题：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="mamba">
 <meta property="og:description" content="在做YZ项目时购物车三级联动没分析清楚，写下这篇来梳理业务逻辑 分析 购物车列表(cartList)异步获取 层级关系为 单个商品选中——店铺选中——全选，三个层级相互依赖，相互联系 控制选中状态核心在于 单个商品及店铺的状态 所以在获取数据之后应当立即对shop.checked和good.checked进行初始化(由于Vue的响应式原理，需要先处理数据后赋值才能使checked动态响应) 自下而">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-29T19:12:27.777Z">
+<meta property="og:updated_time" content="2019-03-29T19:14:07.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="购物车三级联动分析">
 <meta name="twitter:description" content="在做YZ项目时购物车三级联动没分析清楚，写下这篇来梳理业务逻辑 分析 购物车列表(cartList)异步获取 层级关系为 单个商品选中——店铺选中——全选，三个层级相互依赖，相互联系 控制选中状态核心在于 单个商品及店铺的状态 所以在获取数据之后应当立即对shop.checked和good.checked进行初始化(由于Vue的响应式原理，需要先处理数据后赋值才能使checked动态响应) 自下而">
@@ -344,8 +344,8 @@
 <li>购物车列表(cartList)异步获取</li>
 <li>层级关系为 单个商品选中——店铺选中——全选，三个层级相互依赖，相互联系</li>
 <li>控制选中状态核心在于 <code>单个商品及店铺的状态</code> 所以在获取数据之后应当立即对shop.checked和good.checked进行初始化(<code>由于Vue的响应式原理，需要先处理数据后赋值才能使checked动态响应</code>)</li>
-<li>自下而上：<code>从对单个商品的状态判断店铺和全选的状态，从店铺的状态判断全选的状态</code></li>
-<li>自上而下：<code>从全选的状态直接控制店铺和单个商品的状态，从店铺的状态直接控制单个商品的状态</code></li>
+<li><code>自下而上：</code>从对单个商品的状态判断店铺和全选的状态，从店铺的状态判断全选的状态</li>
+<li><code>自上而下：</code>从全选的状态直接控制店铺和单个商品的状态，从店铺的状态直接控制单个商品的状态</li>
 <li>全选比较特殊，控制所有，又被牵连其中，使用计算属性get和set</li>
 </ul>
 
@@ -381,6 +381,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/03/JavaScript数组/" rel="prev" title="JavaScript数组">
+                JavaScript数组 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -457,7 +461,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

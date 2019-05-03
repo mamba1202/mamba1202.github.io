@@ -269,6 +269,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/03/JavaScript数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张哲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mamba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/03/JavaScript数组/" itemprop="url">JavaScript数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-03T13:14:51+08:00">
+                2019-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><h5 id="双层循坏"><a href="#双层循坏" class="headerlink" title="双层循坏"></a>双层循坏</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var array = [1, 1, &apos;1&apos;, &apos;1&apos;];</span><br><span class="line"></span><br><span class="line">function unique(array) &#123;</span><br><span class="line">    //res用来存储结果</span><br><span class="line">    var res = []</span><br><span class="line">    for (var i = 0; i &lt; array.length; i++) &#123;</span><br><span class="line">        for (var j = 0; j &lt; res.length; i++) &#123;</span><br><span class="line">            if (array[i] === res[j]) &#123;</span><br><span class="line">                break</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果array[i]是唯一的，那么执行完循环，j等于resLen</span><br><span class="line">        if (j === res.length) &#123;</span><br><span class="line">            res.push(array[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(unique(array)); // [1, &quot;1&quot;]</span><br></pre></td></tr></table></figure>
+<h5 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h5> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var array = [1, 1, &apos;1&apos;];</span><br><span class="line"></span><br><span class="line">function unique(array) &#123;</span><br><span class="line">    var res = [];</span><br><span class="line">    for (var i = 0, len = array.length; i &lt; len; i++) &#123;</span><br><span class="line">        var current = array[i];</span><br><span class="line">        if (res.indexOf(current) === -1) &#123;</span><br><span class="line">            res.push(current)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(unique(array));</span><br></pre></td></tr></table></figure>
+<h5 id="排序后去重"><a href="#排序后去重" class="headerlink" title="排序后去重"></a>排序后去重</h5><p>  试想我们先将要去重的数组使用 sort 方法排序后，相同的值就会被排在一起，然后我们就可以只判断当前元素与上一个元素是否相同，相同就说明重复，不相同就添加进 res，让我们写个 demo：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var array = [1, 1, &apos;1&apos;];</span><br><span class="line"></span><br><span class="line">function unique(array) &#123;</span><br><span class="line">    var res = [];</span><br><span class="line">    var sortedArray = array.concat().sort();</span><br><span class="line">    var seen;</span><br><span class="line">    for (var i = 0, len = sortedArray.length; i &lt; len; i++) &#123;</span><br><span class="line">        // 如果是第一个元素或者相邻的元素不相同</span><br><span class="line">        if (!i || seen !== sortedArray[i]) &#123;</span><br><span class="line">            res.push(sortedArray[i])</span><br><span class="line">        &#125;</span><br><span class="line">        seen = sortedArray[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(unique(array));</span><br></pre></td></tr></table></figure></p>
+<p>如果我们对一个已经排好序的数组去重，这种方法效率肯定高于使用 indexOf。</p>
+<h4 id="待续···"><a href="#待续···" class="headerlink" title="待续···"></a>待续···</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/购物车三级联动分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -345,8 +468,8 @@
 <li>购物车列表(cartList)异步获取</li>
 <li>层级关系为 单个商品选中——店铺选中——全选，三个层级相互依赖，相互联系</li>
 <li>控制选中状态核心在于 <code>单个商品及店铺的状态</code> 所以在获取数据之后应当立即对shop.checked和good.checked进行初始化(<code>由于Vue的响应式原理，需要先处理数据后赋值才能使checked动态响应</code>)</li>
-<li>自下而上：<code>从对单个商品的状态判断店铺和全选的状态，从店铺的状态判断全选的状态</code></li>
-<li>自上而下：<code>从全选的状态直接控制店铺和单个商品的状态，从店铺的状态直接控制单个商品的状态</code></li>
+<li><code>自下而上：</code>从对单个商品的状态判断店铺和全选的状态，从店铺的状态判断全选的状态</li>
+<li><code>自上而下：</code>从全选的状态直接控制店铺和单个商品的状态，从店铺的状态直接控制单个商品的状态</li>
 <li>全选比较特殊，控制所有，又被牵连其中，使用计算属性get和set</li>
 </ul>
 
@@ -1355,143 +1478,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/21/HTTP缓存相关内容/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张哲">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mamba">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/21/HTTP缓存相关内容/" itemprop="url">HTTP缓存相关内容</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-21T23:25:16+08:00">
-                2019-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-Cache-Control-推荐"><a href="#1-Cache-Control-推荐" class="headerlink" title="1.Cache-Control(推荐)"></a>1.Cache-Control(推荐)</h3><h4 id="设置时间长度"><a href="#设置时间长度" class="headerlink" title="设置时间长度"></a><code>设置时间长度</code></h4><p> <code>Cache-Control max-age=时间长度<code></code></code></p>
-<ul>
-<li>Cache-Control max-age=30<br>30秒内请求相同的URL 会阻拦 直接用上一次的缓存内容</li>
-<li>Disable cache 开启则禁用缓存</li>
-<li>首页不设置缓存  <h4 id="服务器更新数据客户端接受不到"><a href="#服务器更新数据客户端接受不到" class="headerlink" title="服务器更新数据客户端接受不到"></a>服务器更新数据客户端接受不到</h4><h6 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h6></li>
-<li>入口HTML处将<code>URL改变</code>—每次更新时修改URL加 <code>查询参数，随机数或者MD5</code></li>
-<li>Cache-Control可以让浏览器一段时间不访问服务器 直接用本地硬盘或内存作为响应   </li>
-<li>浏览器会给一定内存放置缓存  如满会删除之前的<h5 id="Cache-Control的其他值"><a href="#Cache-Control的其他值" class="headerlink" title="Cache-Control的其他值"></a>Cache-Control的其他值</h5></li>
-<li><code>max-age，</code>表示当前资源的有效时间，单位为秒。</li>
-<li><code>no-cache</code>表示不使用 Cache-Control的缓存控制方式做前置验证，而是使用 Etag 或者Last-Modified字段来控制缓存</li>
-<li><code>no-store ，</code>真正的不缓存任何东西。浏览器会直接向服务器请求原始文件，并且请求中不附带 Etag 参数(服务器认为是新请求)。</li>
-</ul>
-<h3 id="2-Expires-慎用"><a href="#2-Expires-慎用" class="headerlink" title="2.Expires(慎用)"></a>2.Expires(慎用)</h3><p><code>设置时间点</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(&apos;Expires&apos;, &apos;Wed, 28 Nov 2018 05:31:09 GMT&apos;)</span><br></pre></td></tr></table></figure></p>
-<p><code>几分几秒过期指本地时间,但如果本地时间点错误—所有缓存会全部清空</code></p>
-<h3 id="3-Cache-Control和ETag的区别"><a href="#3-Cache-Control和ETag的区别" class="headerlink" title="3.Cache-Control和ETag的区别"></a>3.Cache-Control和ETag的区别</h3><ul>
-<li>Cache-Control： 在设置的时间长度内会使用缓存，<code>不需要发HTTP请求询问服务器</code></li>
-<li>ETag: <font color="#00dddd">需要发HTTP请求</font>其中带有<code>If-None-Match请求头，</code>里面存的是上一次响应头的Etag内容<code>(文件的MD5值)</code>服务器收到请求后<code>会提取if-none-match值，去和该资源的MD5进行对比，如果相同则返回缓存内容(返回状态码304 有请求，有响应，但是响应没有第四部分)，否则返回请求资源内容</code> <h6 id="优先使用Cache-Control-直接不请求"><a href="#优先使用Cache-Control-直接不请求" class="headerlink" title="优先使用Cache-Control 直接不请求"></a>优先使用Cache-Control 直接不请求</h6></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1542,7 +1528,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

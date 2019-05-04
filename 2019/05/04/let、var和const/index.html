@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="forEach遍历数组中的元素。为每个元素执行回调。无返回值。123456const a = [1, 2, 3];const doubled = a.forEach((num, index) =&amp;gt; &amp;#123;  // 执行与 num、index 相关的代码&amp;#125;);// doubled = undefined map遍历数组中的元素通过对每个元素调用函数，将每个元素“映射（map）”">
+<meta name="description" content="用var声明的变量的作用域是它当前的执行上下文，它可以是嵌套的函数，也可以是声明在任何函数外的变量。let和const是块级作用域，意味着它们只能在最近的一组花括号（function、if-else 代码块或 for 循环中）中访问。1234567891011121314function foo() &amp;#123;  // 所有变量在函数中都可访问  var bar = &amp;apos;bar&amp;apos">
 <meta property="og:type" content="article">
-<meta property="og:title" content="forEach map和for">
-<meta property="og:url" content="http://yoursite.com/2019/05/04/forEach和map/index.html">
+<meta property="og:title" content="let、var和const">
+<meta property="og:url" content="http://yoursite.com/2019/05/04/let、var和const/index.html">
 <meta property="og:site_name" content="mamba">
-<meta property="og:description" content="forEach遍历数组中的元素。为每个元素执行回调。无返回值。123456const a = [1, 2, 3];const doubled = a.forEach((num, index) =&amp;gt; &amp;#123;  // 执行与 num、index 相关的代码&amp;#125;);// doubled = undefined map遍历数组中的元素通过对每个元素调用函数，将每个元素“映射（map）”">
+<meta property="og:description" content="用var声明的变量的作用域是它当前的执行上下文，它可以是嵌套的函数，也可以是声明在任何函数外的变量。let和const是块级作用域，意味着它们只能在最近的一组花括号（function、if-else 代码块或 for 循环中）中访问。1234567891011121314function foo() &amp;#123;  // 所有变量在函数中都可访问  var bar = &amp;apos;bar&amp;apos">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-04T03:04:54.220Z">
+<meta property="og:updated_time" content="2019-05-04T03:58:42.276Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="forEach map和for">
-<meta name="twitter:description" content="forEach遍历数组中的元素。为每个元素执行回调。无返回值。123456const a = [1, 2, 3];const doubled = a.forEach((num, index) =&amp;gt; &amp;#123;  // 执行与 num、index 相关的代码&amp;#125;);// doubled = undefined map遍历数组中的元素通过对每个元素调用函数，将每个元素“映射（map）”">
+<meta name="twitter:title" content="let、var和const">
+<meta name="twitter:description" content="用var声明的变量的作用域是它当前的执行上下文，它可以是嵌套的函数，也可以是声明在任何函数外的变量。let和const是块级作用域，意味着它们只能在最近的一组花括号（function、if-else 代码块或 for 循环中）中访问。1234567891011121314function foo() &amp;#123;  // 所有变量在函数中都可访问  var bar = &amp;apos;bar&amp;apos">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/04/forEach和map/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/04/let、var和const/">
 
 
 
 
 
-  <title>forEach map和for | mamba</title>
+  <title>let、var和const | mamba</title>
   
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/forEach和map/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/let、var和const/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张哲">
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">forEach map和for</h1>
+          <h1 class="post-title" itemprop="name headline">let、var和const</h1>
         
 
         <div class="post-meta">
@@ -301,7 +301,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-04T10:31:13+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-04T11:06:49+08:00">
                 2019-05-04
               </time>
             
@@ -339,23 +339,11 @@
       
 
       
-        <h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><p>遍历数组中的元素。<br>为每个元素执行回调。<br>无返回值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const a = [1, 2, 3];</span><br><span class="line">const doubled = a.forEach((num, index) =&gt; &#123;</span><br><span class="line">  // 执行与 num、index 相关的代码</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// doubled = undefined</span><br></pre></td></tr></table></figure></p>
-<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>遍历数组中的元素<br>通过对每个元素调用函数，将每个元素“映射（map）”到一个新元素，从而创建一个新数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const a = [1, 2, 3];</span><br><span class="line">const doubled = a.map(num =&gt; &#123;</span><br><span class="line">  return num * 2;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// doubled = [2, 4, 6]</span><br></pre></td></tr></table></figure></p>
-<p>.forEach和.map()的主要区别在于<code>.map()返回一个新的数组。如果你想得到一个结果，但不想改变原始数组，用.map()。如果你只需要在数组上做迭代修改，用forEach。</code></p>
-<h3 id="遍历对象的属性和数组的元素"><a href="#遍历对象的属性和数组的元素" class="headerlink" title="遍历对象的属性和数组的元素"></a>遍历对象的属性和数组的元素</h3><h6 id="对象："><a href="#对象：" class="headerlink" title="对象："></a>对象：</h6><ul>
-<li><p>for循环：<br>for (var property in obj) { console.log(property); }<br><code>但是，这还会遍历到它的继承属性，在使用之前，你需要加入obj.hasOwnProperty(property)检查。</code></p>
-</li>
-<li><p>Object.keys()：<br>Object.keys(obj).forEach(function (property) { … })<br><code>Object.keys()方法会返回一个由一个给定对象的自身可枚举属性组成的数组。</code></p>
-</li>
-<li>Object.getOwnPropertyNames()：<br>Object.getOwnPropertyNames(obj).forEach(function (property) { … })。<br><code>Object.getOwnPropertyNames()方法返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性但不包括 Symbol 值作为名称的属性）组成的数组。</code></li>
-</ul>
-<h6 id="数组："><a href="#数组：" class="headerlink" title="数组："></a>数组：</h6><ul>
-<li><p>for loops：<br>for (var i = 0; i &lt; arr.length; i++)<br>这里的常见错误是var是函数作用域而不是块级作用域，大多数时候你想要迭代变量在块级作用域中。ES2015 引入了具有块级作用域的let，建议使用它。<br><code>所以就变成了：for (let i = 0; i &lt; arr.length; i++)。</code></p>
-</li>
-<li><p>forEach：<br>arr.forEach(function (el, index) { … })<br>这个语句结构有时会更精简，<code>因为如果你所需要的只是数组元素，你不必使用index。还有every和some方法可以让你提前终止遍历。</code></p>
-</li>
-</ul>
-<h5 id="for循环有更强的灵活性，比如使用break提前终止循环，或者递增步数大于一。"><a href="#for循环有更强的灵活性，比如使用break提前终止循环，或者递增步数大于一。" class="headerlink" title="for循环有更强的灵活性，比如使用break提前终止循环，或者递增步数大于一。"></a>for循环有更强的灵活性，比如使用break提前终止循环，或者递增步数大于一。</h5>
+        <p>用var声明的变量的作用域是<code>它当前的执行上下文，</code>它可以是嵌套的函数，也可以是声明在任何函数外的变量。<code>let和const是块级作用域，意味着它们只能在最近的一组花括号（function、if-else 代码块或 for 循环中）中访问。</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  // 所有变量在函数中都可访问</span><br><span class="line">  var bar = &apos;bar&apos;;</span><br><span class="line">  let baz = &apos;baz&apos;;</span><br><span class="line">  const qux = &apos;qux&apos;;</span><br><span class="line"></span><br><span class="line">  console.log(bar); // bar</span><br><span class="line">  console.log(baz); // baz</span><br><span class="line">  console.log(qux); // qux</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(bar); // ReferenceError: bar is not defined</span><br><span class="line">console.log(baz); // ReferenceError: baz is not defined</span><br><span class="line">console.log(qux); // ReferenceError: qux is not defined</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if (true) &#123;</span><br><span class="line">  var bar = &apos;bar&apos;;</span><br><span class="line">  let baz = &apos;baz&apos;;</span><br><span class="line">  const qux = &apos;qux&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 用 var 声明的变量在函数作用域上都可访问</span><br><span class="line">console.log(bar); // bar</span><br><span class="line">// let 和 const 定义的变量在它们被定义的语句块之外不可访问</span><br><span class="line">console.log(baz); // ReferenceError: baz is not defined</span><br><span class="line">console.log(qux); // ReferenceError: qux is not defined</span><br></pre></td></tr></table></figure>
+<h5 id="var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。"><a href="#var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。" class="headerlink" title="var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。"></a>var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.log(foo); // undefined</span><br><span class="line">var foo = &apos;foo&apos;;</span><br><span class="line"></span><br><span class="line">console.log(baz); // ReferenceError: can&apos;t access lexical declaration &apos;baz&apos; before initialization</span><br><span class="line">let baz = &apos;baz&apos;;</span><br><span class="line"></span><br><span class="line">console.log(bar); // ReferenceError: can&apos;t access lexical declaration &apos;bar&apos; before initialization</span><br><span class="line">const bar = &apos;bar&apos;;</span><br></pre></td></tr></table></figure>
+<h5 id="用var重复声明不会报错，但let和const会。"><a href="#用var重复声明不会报错，但let和const会。" class="headerlink" title="用var重复声明不会报错，但let和const会。"></a>用var重复声明不会报错，但let和const会。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var foo = &apos;foo&apos;;</span><br><span class="line">var foo = &apos;bar&apos;;</span><br><span class="line">console.log(foo); // &quot;bar&quot;</span><br><span class="line"></span><br><span class="line">let baz = &apos;baz&apos;;</span><br><span class="line">let baz = &apos;qux&apos;; // Uncaught SyntaxError: Identifier &apos;baz&apos; has already been declared</span><br></pre></td></tr></table></figure>
+<h5 id="let和const的区别在于：let允许多次赋值，而const只允许一次。"><a href="#let和const的区别在于：let允许多次赋值，而const只允许一次。" class="headerlink" title="let和const的区别在于：let允许多次赋值，而const只允许一次。"></a>let和const的区别在于：let允许多次赋值，而const只允许一次。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 这样不会报错。</span><br><span class="line">let foo = &apos;foo&apos;;</span><br><span class="line">foo = &apos;bar&apos;;</span><br><span class="line"></span><br><span class="line">// 这样会报错。</span><br><span class="line">const baz = &apos;baz&apos;;</span><br><span class="line">baz = &apos;qux&apos;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -379,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/03/JavaScript类型判断/" rel="next" title="JavaScript类型判断">
-                <i class="fa fa-chevron-left"></i> JavaScript类型判断
+              <a href="/2019/05/04/forEach和map/" rel="next" title="forEach map和for">
+                <i class="fa fa-chevron-left"></i> forEach map和for
               </a>
             
           </div>
@@ -388,10 +376,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/04/let、var和const/" rel="prev" title="let、var和const">
-                let、var和const <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -521,7 +505,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach"><span class="nav-number">1.</span> <span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">2.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历对象的属性和数组的元素"><span class="nav-number">3.</span> <span class="nav-text">遍历对象的属性和数组的元素</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#对象："><span class="nav-number">3.0.0.1.</span> <span class="nav-text">对象：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数组："><span class="nav-number">3.0.0.2.</span> <span class="nav-text">数组：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#for循环有更强的灵活性，比如使用break提前终止循环，或者递增步数大于一。"><span class="nav-number">3.0.1.</span> <span class="nav-text">for循环有更强的灵活性，比如使用break提前终止循环，或者递增步数大于一。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。"><span class="nav-number">1.</span> <span class="nav-text">var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用var重复声明不会报错，但let和const会。"><span class="nav-number">2.</span> <span class="nav-text">用var重复声明不会报错，但let和const会。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#let和const的区别在于：let允许多次赋值，而const只允许一次。"><span class="nav-number">3.</span> <span class="nav-text">let和const的区别在于：let允许多次赋值，而const只允许一次。</span></a></li></ol></div>
             
 
           </div>

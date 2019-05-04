@@ -598,7 +598,7 @@
       
         
           
-            <h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>我们最常见的是typeof,通常我们会看到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(typeof(&apos;mamba&apos;))  //string</span><br></pre></td></tr></table></figure></p>
+            <h3 id="typeof、prototype、instanceof、constructor方法比较"><a href="#typeof、prototype、instanceof、constructor方法比较" class="headerlink" title="typeof、prototype、instanceof、constructor方法比较"></a>typeof、prototype、instanceof、constructor方法比较</h3><h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>我们最常见的是typeof,通常我们会看到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(typeof(&apos;mamba&apos;))  //string</span><br></pre></td></tr></table></figure></p>
 <p>这种写法，但是typeof可是一个一元运算符，就跟加减乘除一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(typeof &apos;mamba&apos;)  //string</span><br></pre></td></tr></table></figure></p>
 <h6 id="《JavaScript权威指南》中对typeof的介绍："><a href="#《JavaScript权威指南》中对typeof的介绍：" class="headerlink" title="《JavaScript权威指南》中对typeof的介绍："></a>《JavaScript权威指南》中对typeof的介绍：</h6><p>typeof 是一元操作符，放在其单个操作数的前面，操作数可以是任意类型。返回值为表示操作数类型的一个字符串。</p>
 <p>在 ES6 前，JavaScript 共六种数据类型，分别是：</p>
@@ -608,7 +608,7 @@
 <p>所以 typeof 能检测出六种类型的值，但是，除此之外 Object 下还有很多细分的类型呐，如 Array、Function、Date、RegExp、Error 等。</p>
 <p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var date = new Date();</span><br><span class="line">var error = new Error();</span><br><span class="line">console.log(typeof date); // object</span><br><span class="line">console.log(typeof error); // object</span><br></pre></td></tr></table></figure></p>
 <p>返回的都是 object ,所以就要用Object.prototype.toString来检测了</p>
-<h3 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString"></a>Object.prototype.toString</h3><p>当 toString 方法被调用的时候，下面的步骤会被执行：</p>
+<h3 id="Object-prototype-toString-通用但很繁琐"><a href="#Object-prototype-toString-通用但很繁琐" class="headerlink" title="Object.prototype.toString(通用但很繁琐)"></a>Object.prototype.toString(通用但很繁琐)</h3><p>当 toString 方法被调用的时候，下面的步骤会被执行：</p>
 <ul>
 <li>如果 this 值是 undefined，就返回 [object Undefined]</li>
 <li>如果 this 的值是 null，就返回 [object Null]</li>
@@ -632,7 +632,28 @@
 </ul>
 <h4 id="isFunction"><a href="#isFunction" class="headerlink" title="isFunction"></a>isFunction</h4><p>有了 type 函数后，我们可以对常用的判断直接封装，比如 isFunction:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function isFunction(obj) &#123;</span><br><span class="line">    return type(obj) === &quot;function&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>jQuery 判断数组类型，旧版本是通过判断 Array.isArray 方法是否存在，如果存在就使用该方法，不存在就使用 type 函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var isArray = Array.isArray || function( obj ) &#123;</span><br><span class="line">    return type(obj) === &quot;array&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="待续···"><a href="#待续···" class="headerlink" title="待续···"></a>待续···</h4>
+<h4 id="待续···"><a href="#待续···" class="headerlink" title="待续···"></a>待续···</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;iamstring.&quot;;</span><br><span class="line">var b = 222;</span><br><span class="line">var c= [1,2,3];</span><br><span class="line">var d = new Date();</span><br><span class="line">var e = function()&#123;alert(111);&#125;;</span><br><span class="line">var f = function()&#123;this.name=&quot;22&quot;;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="判断已知对象类型的方法：instanceof"><a href="#判断已知对象类型的方法：instanceof" class="headerlink" title="判断已知对象类型的方法：instanceof"></a>判断已知对象类型的方法：instanceof</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(c instanceof Array) ---------------&gt; true</span><br><span class="line">alert(d instanceof Date)  ---------------&gt; true</span><br><span class="line">alert(f instanceof Function) ------------&gt; true</span><br><span class="line">alert(f instanceof function) ------------&gt; false</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>注意：instanceof后面一定要是<code>对象类型，并且大小写不能错，</code>该方法适合一些条件选择或分支。</p>
+<h6 id="根据对象的constructor判断：constructor"><a href="#根据对象的constructor判断：constructor" class="headerlink" title="根据对象的constructor判断：constructor"></a>根据对象的constructor判断：constructor</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(c.constructor === Array) ----------&gt; true</span><br><span class="line">alert(d.constructor === Date) -----------&gt; true</span><br><span class="line">alert(e.constructor === Function) -------&gt; true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意：<code> constructor 在类继承时会出错</code></p>
+</li>
+</ul>
+<p>例子：</p>
+<pre><code>function A(){};
+function B(){};
+A.prototype = new B(); //A继承自B
+var aObj = new A();
+alert(aobj.constructor === B) -----------&gt; true;
+alert(aobj.constructor === A) -----------&gt; false;
+</code></pre><h5 id="而instanceof方法不会出现该问题，对象直接继承和间接继承的都会报true："><a href="#而instanceof方法不会出现该问题，对象直接继承和间接继承的都会报true：" class="headerlink" title="而instanceof方法不会出现该问题，对象直接继承和间接继承的都会报true："></a>而instanceof方法不会出现该问题，对象直接继承和间接继承的都会报true：</h5><pre><code>alert(aobj instanceof B) ----------------&gt; true;
+alert(aobj instanceof B) ----------------&gt; true;
+</code></pre><h5 id="言归正传，解决construtor的问题通常是让对象的constructor手动指向自己："><a href="#言归正传，解决construtor的问题通常是让对象的constructor手动指向自己：" class="headerlink" title="言归正传，解决construtor的问题通常是让对象的constructor手动指向自己："></a>言归正传，解决construtor的问题通常是让对象的constructor手动指向自己：</h5><pre><code>aobj.constructor = A; //将自己的类赋值给对象的constructor属性
+alert(aobj.constructor === A) -----------&gt; true;
+alert(aobj.constructor === B) -----------&gt; false; //基类不会报true了;
+</code></pre>
           
         
       

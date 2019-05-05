@@ -269,6 +269,251 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/Vue组件之间的通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张哲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mamba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/29/Vue组件之间的通信/" itemprop="url">Vue组件之间的通信</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T08:36:09+08:00">
+                2019-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/v-clock解决页面加载的闪烁/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张哲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mamba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/29/v-clock解决页面加载的闪烁/" itemprop="url">v-clock解决页面加载的闪烁</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T08:35:05+08:00">
+                2019-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="v-cloak"><a href="#v-cloak" class="headerlink" title="v-cloak"></a>v-cloak</h4><p>这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如<br><code>[v-cloak] { display: none </code><br> 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。</p>
+<ul>
+<li><p>在html挂载点加上 v-cloak，就可以解决页面加载时的闪烁(编译完成时再进行页面渲染)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot; v-cloak&gt;</span><br><span class="line">    &#123;&#123;msg&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">[v-cloak] &#123;</span><br><span class="line">  display: none;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="v-cloak失效的问题："><a href="#v-cloak失效的问题：" class="headerlink" title="v-cloak失效的问题："></a>v-cloak失效的问题：</h4></li>
+</ul>
+<p>如果把<code>[v-cloak]</code>样式写在@import加载的文件里很有可能失效，光是加载这个文件就需要时间，解决方法最好是 写成内联style或者link引入。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/Vue文档学习小结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1341,307 +1586,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/vue-cli项目部署到GitHub-Pages上/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张哲">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mamba">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/15/vue-cli项目部署到GitHub-Pages上/" itemprop="url">vue-cli项目部署到GitHub Pages上</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T17:50:17+08:00">
-                2019-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="1-Node-js安装-自带npm"><a href="#1-Node-js安装-自带npm" class="headerlink" title="1. Node.js安装(自带npm)"></a>1. Node.js安装(自带npm)</h4><h4 id="2-Vue-cli-安装"><a href="#2-Vue-cli-安装" class="headerlink" title="2. Vue-cli 安装"></a>2. Vue-cli 安装</h4><ul>
-<li><p>全局安装vue-cli</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g vue-cli</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入目录-初始化项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack  my-project</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd my-project</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="3-修改Vue项目配置"><a href="#3-修改Vue项目配置" class="headerlink" title="3. 修改Vue项目配置"></a>3. 修改Vue项目配置</h4><ul>
-<li>大家都知道使用npm run build进行打包，这个时候你直接打开dist ‘/‘ 下的index.html,会发现文件可以打开，但是所有的js，css，img等路径有问题是指向根目录的，此时需要修改config/index.js里的assetsPublicPath的 ‘/‘， 初始项目是 ‘/‘ 他是指向项目根目录的也是为什么会出现错误，这时改为 ‘. /‘</li>
-</ul>
-<img src="/2019/03/15/vue-cli项目部署到GitHub-Pages上/02.png" title="This is an 02 image">
-<ul>
-<li><p>将 webpack.prod.conf.js 中的 removeAttributeQuotes 改为 false</p>
-<img src="/2019/03/15/vue-cli项目部署到GitHub-Pages上/03.png" title="This is an 03 image">
-</li>
-<li><p>注释/dist/</p>
-<img src="/2019/03/15/vue-cli项目部署到GitHub-Pages上/01.png" title="This is an 01 image">
-</li>
-</ul>
-<h4 id="4-项目打包"><a href="#4-项目打包" class="headerlink" title="4. 项目打包"></a>4. 项目打包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-<h4 id="项目测试"><a href="#项目测试" class="headerlink" title="- 项目测试"></a>- 项目测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-serevr ./dist</span><br></pre></td></tr></table></figure>
-<h4 id="5-在GitHub上创建与本地项目同名的远程仓库"><a href="#5-在GitHub上创建与本地项目同名的远程仓库" class="headerlink" title="5. 在GitHub上创建与本地项目同名的远程仓库"></a>5. 在GitHub上创建与本地项目同名的远程仓库</h4><h4 id="6-将本地项目push到已经创建好的远程仓库"><a href="#6-将本地项目push到已经创建好的远程仓库" class="headerlink" title="6. 将本地项目push到已经创建好的远程仓库"></a>6. 将本地项目push到已经创建好的远程仓库</h4><p>   点击Settings进入后点击Source里的master branch得到的链接就是项目预览链接</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/vue-js-02/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张哲">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mamba">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/08/vue-js-02/" itemprop="url">vue实例，生命周期钩子，文本插值，数据绑定，指令事件，语法糖</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T13:25:55+08:00">
-                2019-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-1-vue实例和数据绑定"><a href="#1-1-vue实例和数据绑定" class="headerlink" title="1.1 vue实例和数据绑定"></a>1.1 vue实例和数据绑定</h3><ol>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>通过构造函数 Vue 就可以创建一个 Vue 的根实例，并启动 Vue 应用—入口 </p>
-<pre><code>var app ＝new Vue({ 
-    el:&apos;&apos;, 
-    data:{ } 
-    })
-</code></pre><p>2.必不可少的一个选项就是 el 。 el 用于指定一个页面中己存在的 DOM 元素来挂载 Vue实例,可以是标签。也可以是css语法<br>3.通过 Vue 实例的 data 选项 选项，可以声明应用内需要双向绑定的数据。建议所有会用到的数据都预先在 data 内 声明，这样不至于 将数据散落在业务逻辑中，难以维护。也可以指向一个已经有的变量<br>4.挂载成功后，我们可以通过 app.$el 来访问该元素。Vue 提供了很多常用的实例属性与方法，比如 el，Vue实例本身也代理了data对象里的所有属性，所以可以这样访问</p>
-<ul>
-<li>访问vue实例的属性：都以$开头，如app.$data  app.$el</li>
-<li>访问data元素的属性– 直接app.属性名，app.msg</li>
-</ul>
-<h3 id="1-2-生命周期钩子"><a href="#1-2-生命周期钩子" class="headerlink" title="1.2 生命周期钩子"></a>1.2 生命周期钩子</h3><p>jquery—$(document).ready()</p>
-<ul>
-<li>created 实例创建完成后调用，此阶段完成了数据的观测等，但尚未挂载， $el 还不可用。需要初始化处理一些数据时会比较有用，．—-还未挂载</li>
-<li>mounted el 挂载到实例上后调用，一般我们的第一个业务逻辑会在这里开始 。相当于  $(document).ready()—刚刚挂载</li>
-<li>beforeDestroy 实例销毁之前调用。主要解绑一些使用 addEventListener 监听的事件等。</li>
-</ul>
-<h3 id="1-3-文本插值和表达式"><a href="#1-3-文本插值和表达式" class="headerlink" title="1.3 文本插值和表达式"></a>1.3 文本插值和表达式</h3><p>语法：使用双大括号（ Mustache 语法）“{{}}”是最基本的文本插值方法，它会自动将我们双向绑定的数据实时显示出来，</p>
-<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>在｛｛｝｝中，除了简单的绑定属性值外，还可 以使用 JavaScript 表达式进行简单的运算 、 三元运算等 —实例    Vue .js 只支持单个表达式，不支持语句和流控制。  </p>
- { { 6+6 *3} }---可以进行简单的运算 <br><br>{ { 6<3 ? msg :a} }---可以用三元运算符 <br><br>{ {if(6>3){} }-----注意：文本插值的形式，其中不能书写表达式,支持单个表达式<br><br> { {var a = 6} }--也是多行表达式----var a ;a = 6; 〈！一这是语旬，不是表达式 一〉<br><br>{{ var book = "Vue . js 实战 "｝ 〈！一不能使用流控制，要使用三元运算 一〉<br><br> { { if (ok) return msg } }
-<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>Vue. 支持在{{}}插值的尾部添加一小管道符 “ | ” 对数据进行过滤，经常用于格 式化文本，比如字母全部大写、货币千位使用逗号分隔等。过滤的规则是自定义 的， 通过给 Vue 实例添加选项 filters 来设置   过滤器： {{ data | filter1 |filter2}}   {{date | formatDate(66,99)}}<br> 中的第一个和第二个参数，分别对应过滤器的第二个和 第三个参数</p>
-<h3 id="指令和事件"><a href="#指令和事件" class="headerlink" title="指令和事件"></a>指令和事件</h3><p>指令（ Directives ）是 Vue 模板中最常用的一项功能，它带有前缀 v－，能帮我们 快速完成DOM操作。循环渲染。显示和隐藏<br> 本节目标 v-text  , v-html , v-bind , v-on<br>v­-text:­解析文本 和{{}} 作用一样<br>v­-html:解析html<br>v­-bind:v-­bind 的基本用途是动态更新 HTML 元素上的属性，比如 id 、 class 等,本节只介绍基本章节，后面章节会更加深入详细讲述<br>v­-on:它用来绑定事件监听器<br>v-­on具体介绍<br>在普通元素上， v­-on 可以监听原生的 DOM 事件，除了 click 外，还有 dblclick、 keyup, mousemove 等。表达式可以是一个方法名，这些方法都 写在 Vue 实例的 methods 属性内，并且是函数的形式，函数内的 this 指向 的是当前 Vue 实例本身，因此可以直接使用 this.xxx 的形式来访问或修改数 据<br>vue中用 到的所有方法都定义在methods中</p>
-<h3 id="语法糖"><a href="#语法糖" class="headerlink" title="语法糖"></a>语法糖</h3><p>语法糖是指在不影响功能的情况下 ， 添加某种简洁方法实现同样的效果 ， 从而更加方便程 序开发。   v-bind  : (冒号)   v-on @</p>
-</3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1687,7 +1636,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -269,6 +269,132 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/05/求数组中的最大值和最小值/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张哲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mamba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/05/求数组中的最大值和最小值/" itemprop="url">求数组中的最大值和最小值</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-05T14:34:44+08:00">
+                2019-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>了解了 Math.max 方法，我们以求数组最大值的为例，思考有哪些方法可以实现这个需求。</p>
+<h4 id="原始方法"><a href="#原始方法" class="headerlink" title="原始方法"></a>原始方法</h4><p>最最原始的方法，莫过于循环遍历一遍：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var arr = [6, 4, 1, 8, 2, 11, 23];</span><br><span class="line"></span><br><span class="line">var result = arr[0];</span><br><span class="line">for (var i = 1; i &lt; arr.length; i++) &#123;</span><br><span class="line">    result =  Math.max(result, arr[i]);</span><br><span class="line">&#125;</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure></p>
+<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><p>既然是通过遍历数组求出一个最终值，那么我们就可以使用 reduce 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [6, 4, 1, 8, 2, 11, 23];</span><br><span class="line"></span><br><span class="line">function max(prev, next) &#123;</span><br><span class="line">    return Math.max(prev, next);</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr.reduce(max));</span><br></pre></td></tr></table></figure></p>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><p>如果我们先对数组进行一次排序，那么最大值就是最后一个值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [6, 4, 1, 8, 2, 11, 23];</span><br><span class="line"></span><br><span class="line">arr.sort(function(a,b)&#123;return a - b;&#125;);</span><br><span class="line">console.log(arr[arr.length - 1])</span><br></pre></td></tr></table></figure></p>
+<h4 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h4><p>Math.max 支持传多个参数来进行比较，那么我们如何将一个数组转换成参数传进 Math.max 函数呢？eval 便是一种<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [6, 4, 1, 8, 2, 11, 23];</span><br><span class="line"></span><br><span class="line">var max = eval(&quot;Math.max(&quot; + arr + &quot;)&quot;);</span><br><span class="line">console.log(max)</span><br></pre></td></tr></table></figure></p>
+<h4 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h4><p>使用 apply 是另一种。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [6, 4, 1, 8, 2, 11, 23];</span><br><span class="line">console.log(Math.max.apply(null, arr))</span><br></pre></td></tr></table></figure></p>
+<h4 id="ES6-…"><a href="#ES6-…" class="headerlink" title="ES6 …"></a>ES6 …</h4><p>使用 ES6 的扩展运算符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [6, 4, 1, 8, 2, 11, 23];</span><br><span class="line">console.log(Math.max(...arr))</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/05/事件绑定、事件监听、事件委托/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -970,6 +1096,141 @@ alert(aobj.constructor === B) -----------&gt; false; //基类不会报true了;
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/03/JavaScript深浅拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张哲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mamba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/03/JavaScript深浅拷贝/" itemprop="url">JavaScript深浅拷贝</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-03T13:11:05+08:00">
+                2019-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="数组的浅拷贝"><a href="#数组的浅拷贝" class="headerlink" title="数组的浅拷贝"></a>数组的浅拷贝</h4><p>如果是数组，我们可以利用数组的一些方法比如：<code>slice、concat</code> 返回一个新数组的特性来实现拷贝。</p>
+<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;old&apos;, 1, true, null, undefined];</span><br><span class="line"></span><br><span class="line">var new_arr = arr.concat();</span><br><span class="line"></span><br><span class="line">new_arr[0] = &apos;new&apos;;</span><br><span class="line"></span><br><span class="line">console.log(arr) // [&quot;old&quot;, 1, true, null, undefined]</span><br><span class="line">console.log(new_arr) // [&quot;new&quot;, 1, true, null, undefined]</span><br></pre></td></tr></table></figure></p>
+<p>用 slice 可以这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var new_arr = arr.slice();</span><br></pre></td></tr></table></figure></p>
+<p>但是如果数组嵌套了对象或者数组的话，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&#123;old: &apos;old&apos;&#125;, [&apos;old&apos;]];</span><br><span class="line"></span><br><span class="line">var new_arr = arr.concat();</span><br><span class="line"></span><br><span class="line">arr[0].old = &apos;new&apos;;</span><br><span class="line">arr[1][0] = &apos;new&apos;;</span><br><span class="line"></span><br><span class="line">console.log(arr) // [&#123;old: &apos;new&apos;&#125;, [&apos;new&apos;]]</span><br><span class="line">console.log(new_arr) // [&#123;old: &apos;new&apos;&#125;, [&apos;new&apos;]]</span><br></pre></td></tr></table></figure></p>
+<p>我们会发现，无论是新数组还是旧数组都发生了变化，也就是说使用 concat 方法，克隆的并不彻底。</p>
+<ul>
+<li>如果数组元素是基本类型，就会拷贝一份，互不影响(slice和concat如果拷贝基本类型元素的数组是深拷贝，否则是浅拷贝),<code>而如果是对象或者数组，就会只拷贝对象和数组的引用，这样我们无论在新旧数组进行了修改，两者都会发生变化。</code>我们把这种复制引用的拷贝方法称之为浅拷贝，</li>
+<li>与之对应的就是深拷贝，<code>深拷贝就是指完全的拷贝一个对象，即使嵌套了对象，两者也相互分离，修改一个对象的属性，也不会影响另一个。</code></li>
+</ul>
+<p>所以我们可以看出使用<code> concat 和 slice 是一种浅拷贝。(对于数组和对象来说)</code></p>
+<h4 id="数组的深拷贝"><a href="#数组的深拷贝" class="headerlink" title="数组的深拷贝"></a>数组的深拷贝</h4><p>那如何深拷贝一个数组呢？这里介绍一个技巧，不仅适用于数组还适用于对象！那就是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;old&apos;, 1, true, [&apos;old1&apos;, &apos;old2&apos;], &#123;old: 1&#125;]</span><br><span class="line"></span><br><span class="line">var new_arr = JSON.parse( JSON.stringify(arr) );</span><br><span class="line"></span><br><span class="line">console.log(new_arr);</span><br></pre></td></tr></table></figure></p>
+<p>是一个简单粗暴的好方法，就是有一个问题，不能拷贝函数，</p>
+<h4 id="浅拷贝的实现"><a href="#浅拷贝的实现" class="headerlink" title="浅拷贝的实现"></a>浅拷贝的实现</h4><p>以上三个方法 <code>concat、slice、JSON.stringify 都算是技巧类，</code>可以根据实际项目情况选择使用，</p>
+<p>接下来我们思考下如何实现一个对象或者数组的浅拷贝。<br>想一想，好像很简单，遍历对象，然后把属性和属性值都放在一个新的对象不就好了~<br>嗯，就是这么简单，注意几个小点就可以了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var shallowCopy = function(obj) &#123;</span><br><span class="line">    // 只拷贝对象</span><br><span class="line">    if (typeof obj !== &apos;object&apos;) return;</span><br><span class="line">    // 根据obj的类型判断是新建一个数组还是对象</span><br><span class="line">    var newObj = obj instanceof Array ? [] : &#123;&#125;;</span><br><span class="line">    // 遍历obj，并且判断是obj的属性才拷贝</span><br><span class="line">    for (var key in obj) &#123;</span><br><span class="line">        if (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">            newObj[key] = obj[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="深拷贝的实现"><a href="#深拷贝的实现" class="headerlink" title="深拷贝的实现"></a>深拷贝的实现</h4><p>那如何实现一个深拷贝呢？说起来也好简单，我们在拷贝的时候判断一下属性值的类型，如果是对象，我们递归调用深拷贝函数不就好了~<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var deepCopy = function(obj) &#123;</span><br><span class="line">    if (typeof obj !== &apos;object&apos;) return;</span><br><span class="line">    var newObj = obj instanceof Array ? [] : &#123;&#125;;</span><br><span class="line">    for (var key in obj) &#123;</span><br><span class="line">        if (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">            newObj[key] = typeof obj[key] === &apos;object&apos; ? deepCopy(obj[key]) : obj[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h4><p>尽管使用深拷贝会完全的克隆一个新对象，不会产生副作用，但是深拷贝因为使用递归，性能会不如浅拷贝，在开发中，还是要根据实际情况进行选择。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/购物车三级联动分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1323,256 +1584,11 @@ alert(aobj.constructor === B) -----------&gt; false; //基类不会报true了;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/Vue组件之间的通信/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张哲">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mamba">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/29/Vue组件之间的通信/" itemprop="url">Vue组件之间的通信</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T08:36:09+08:00">
-                2019-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/v-clock解决页面加载的闪烁/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张哲">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mamba">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/29/v-clock解决页面加载的闪烁/" itemprop="url">v-clock解决页面加载的闪烁</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T08:35:05+08:00">
-                2019-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="v-cloak"><a href="#v-cloak" class="headerlink" title="v-cloak"></a>v-cloak</h4><p>这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如<br><code>[v-cloak] { display: none </code><br> 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。</p>
-<ul>
-<li><p>在html挂载点加上 v-cloak，就可以解决页面加载时的闪烁(编译完成时再进行页面渲染)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot; v-cloak&gt;</span><br><span class="line">    &#123;&#123;msg&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">[v-cloak] &#123;</span><br><span class="line">  display: none;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="v-cloak失效的问题："><a href="#v-cloak失效的问题：" class="headerlink" title="v-cloak失效的问题："></a>v-cloak失效的问题：</h4></li>
-</ul>
-<p>如果把<code>[v-cloak]</code>样式写在@import加载的文件里很有可能失效，光是加载这个文件就需要时间，解决方法最好是 写成内联style或者link引入。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1618,7 +1634,7 @@ alert(aobj.constructor === B) -----------&gt; false; //基类不会报true了;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

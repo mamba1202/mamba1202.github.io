@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="v-cloak这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如[v-cloak] { display: none  一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。  在html挂载点加上 v-cloak，就可以解决页面加载时的闪烁(编译完成时再进行页面渲染) 123456789&amp;lt;div id=&amp;quot;app&amp;quot; v-cloak&amp;gt;">
+<meta name="description" content="节流节流的原理很简单： 如果你持续触发事件，每隔一段时间，只执行一次事件。 根据首次是否执行以及结束后是否执行，效果有所不同，实现的方式也有所不同。我们用 leading 代表首次是否执行，trailing 代表结束后是否再执行一次。 关于节流的实现，有两种主流的实现方式，一种是使用时间戳，一种是设置定时器。 使用时间戳让我们来看第一种方法：使用时间戳，当触发事件的时候，我们取出当前的时间戳，然后">
 <meta property="og:type" content="article">
-<meta property="og:title" content="v-clock解决页面加载的闪烁">
-<meta property="og:url" content="http://yoursite.com/2019/03/29/v-clock解决页面加载的闪烁/index.html">
+<meta property="og:title" content="节流函数">
+<meta property="og:url" content="http://yoursite.com/2019/05/08/节流函数/index.html">
 <meta property="og:site_name" content="mamba">
-<meta property="og:description" content="v-cloak这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如[v-cloak] { display: none  一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。  在html挂载点加上 v-cloak，就可以解决页面加载时的闪烁(编译完成时再进行页面渲染) 123456789&amp;lt;div id=&amp;quot;app&amp;quot; v-cloak&amp;gt;">
+<meta property="og:description" content="节流节流的原理很简单： 如果你持续触发事件，每隔一段时间，只执行一次事件。 根据首次是否执行以及结束后是否执行，效果有所不同，实现的方式也有所不同。我们用 leading 代表首次是否执行，trailing 代表结束后是否再执行一次。 关于节流的实现，有两种主流的实现方式，一种是使用时间戳，一种是设置定时器。 使用时间戳让我们来看第一种方法：使用时间戳，当触发事件的时候，我们取出当前的时间戳，然后">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-29T19:07:53.846Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/节流函数/throttle1.gif">
+<meta property="og:image" content="http://yoursite.com/2019/05/08/节流函数/throttle2.gif">
+<meta property="og:updated_time" content="2019-05-08T14:13:55.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="v-clock解决页面加载的闪烁">
-<meta name="twitter:description" content="v-cloak这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如[v-cloak] { display: none  一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。  在html挂载点加上 v-cloak，就可以解决页面加载时的闪烁(编译完成时再进行页面渲染) 123456789&amp;lt;div id=&amp;quot;app&amp;quot; v-cloak&amp;gt;">
+<meta name="twitter:title" content="节流函数">
+<meta name="twitter:description" content="节流节流的原理很简单： 如果你持续触发事件，每隔一段时间，只执行一次事件。 根据首次是否执行以及结束后是否执行，效果有所不同，实现的方式也有所不同。我们用 leading 代表首次是否执行，trailing 代表结束后是否再执行一次。 关于节流的实现，有两种主流的实现方式，一种是使用时间戳，一种是设置定时器。 使用时间戳让我们来看第一种方法：使用时间戳，当触发事件的时候，我们取出当前的时间戳，然后">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/08/节流函数/throttle1.gif">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/29/v-clock解决页面加载的闪烁/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/08/节流函数/">
 
 
 
 
 
-  <title>v-clock解决页面加载的闪烁 | mamba</title>
+  <title>节流函数 | mamba</title>
   
 
 
@@ -272,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/v-clock解决页面加载的闪烁/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/08/节流函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张哲">
@@ -289,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">v-clock解决页面加载的闪烁</h1>
+          <h1 class="post-title" itemprop="name headline">节流函数</h1>
         
 
         <div class="post-meta">
@@ -301,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T08:35:05+08:00">
-                2019-03-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-08T12:22:19+08:00">
+                2019-05-08
               </time>
             
 
@@ -339,14 +342,26 @@
       
 
       
-        <h4 id="v-cloak"><a href="#v-cloak" class="headerlink" title="v-cloak"></a>v-cloak</h4><p>这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如<br><code>[v-cloak] { display: none </code><br> 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。</p>
-<ul>
-<li><p>在html挂载点加上 v-cloak，就可以解决页面加载时的闪烁(编译完成时再进行页面渲染)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot; v-cloak&gt;</span><br><span class="line">    &#123;&#123;msg&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">[v-cloak] &#123;</span><br><span class="line">  display: none;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="v-cloak失效的问题："><a href="#v-cloak失效的问题：" class="headerlink" title="v-cloak失效的问题："></a>v-cloak失效的问题：</h4></li>
-</ul>
-<p>如果把<code>[v-cloak]</code>样式写在@import加载的文件里很有可能失效，光是加载这个文件就需要时间，解决方法最好是 写成内联style或者link引入。</p>
-
+        <h4 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h4><p>节流的原理很简单：</p>
+<p><code>如果你持续触发事件，每隔一段时间，只执行一次事件。</code></p>
+<p>根据首次是否执行以及结束后是否执行，效果有所不同，实现的方式也有所不同。<br>我们用 leading 代表首次是否执行，trailing 代表结束后是否再执行一次。</p>
+<p>关于节流的实现，有两种主流的实现方式，一种是使用时间戳，一种是设置定时器。</p>
+<h4 id="使用时间戳"><a href="#使用时间戳" class="headerlink" title="使用时间戳"></a>使用时间戳</h4><p>让我们来看第一种方法：使用时间戳，当触发事件的时候，我们取出当前的时间戳，然后减去之前的时间戳(最一开始值设为 0 )，如果大于设置的时间周期，就执行函数，然后更新时间戳为当前的时间戳，如果小于，就不执行。</p>
+<p>看了这个表述，是不是感觉已经可以写出代码了…… 让我们来写第一版的代码：</p>
+<h5 id="第一版"><a href="#第一版" class="headerlink" title="第一版"></a>第一版</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function throttle(func, wait) &#123;</span><br><span class="line">    var context, args;</span><br><span class="line">    var previous = 0;</span><br><span class="line"></span><br><span class="line">    return function() &#123;</span><br><span class="line">        var now = +new Date();</span><br><span class="line">        context = this;</span><br><span class="line">        args = arguments;</span><br><span class="line">        if (now - previous &gt; wait) &#123;</span><br><span class="line">            func.apply(context, args);</span><br><span class="line">            previous = now;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子依然是用讲 debounce 中的例子，如果你要使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">container.onmousemove = throttle(getUserAction, 1000);</span><br></pre></td></tr></table></figure></p>
+<p>效果演示如下：<br><img src="/2019/05/08/节流函数/throttle1.gif" title="This is an throttle1 image"></p>
+<h4 id="使用时间戳-1"><a href="#使用时间戳-1" class="headerlink" title="使用时间戳"></a>使用时间戳</h4><p>我们可以看到：当鼠标移入的时候，事件立刻执行，每过 1s 会执行一次，如果在 4.2s 停止触发，以后不会再执行事件。</p>
+<p>使用定时器<br>接下来，我们讲讲第二种实现方式，使用定时器。</p>
+<p>当触发事件的时候，我们设置一个定时器，再触发事件的时候，如果定时器存在，就不执行，直到定时器执行，然后执行函数，清空定时器，这样就可以设置下个定时器。</p>
+<h5 id="第二版"><a href="#第二版" class="headerlink" title="第二版"></a>第二版</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function throttle(func, wait) &#123;</span><br><span class="line">    var timeout;</span><br><span class="line">    var previous = 0;</span><br><span class="line"></span><br><span class="line">    return function() &#123;</span><br><span class="line">        context = this;</span><br><span class="line">        args = arguments;</span><br><span class="line">        if (!timeout) &#123;</span><br><span class="line">            timeout = setTimeout(function()&#123;</span><br><span class="line">                timeout = null;</span><br><span class="line">                func.apply(context, args)</span><br><span class="line">            &#125;, wait)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了让效果更加明显，我们设置 wait 的时间为 3s，效果演示如下：</p>
+<img src="/2019/05/08/节流函数/throttle2.gif" title="This is an throttle2 image">
+<p>使用定时器</p>
+<p>我们可以看到：当鼠标移入的时候，事件不会立刻执行，晃了 3s 后终于执行了一次，此后每 3s 执行一次，当数字显示为 3 的时候，立刻移出鼠标，相当于大约 9.2s 的时候停止触发，但是依然会在第 12s 的时候执行一次事件。</p>
+<p>所以比较两个方法：</p>
+<p>第一种事件会立刻执行，第二种事件会在 n 秒后第一次执行<br>第一种事件停止触发后没有办法再执行事件，第二种事件停止触发后依然会再执行一次事件</p>
+<h4 id="待续-···"><a href="#待续-···" class="headerlink" title="待续 ···"></a>待续 ···</h4>
       
     </div>
     
@@ -370,8 +385,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/29/Vue文档学习小结/" rel="next" title="Vue文档学习小结">
-                <i class="fa fa-chevron-left"></i> Vue文档学习小结
+              <a href="/2019/05/08/防抖函数/" rel="next" title="防抖函数">
+                <i class="fa fa-chevron-left"></i> 防抖函数
               </a>
             
           </div>
@@ -379,10 +394,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/29/Vue组件之间的通信/" rel="prev" title="Vue组件之间的通信">
-                Vue组件之间的通信 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -512,7 +523,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-cloak"><span class="nav-number">1.</span> <span class="nav-text">v-cloak</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-cloak失效的问题："><span class="nav-number">2.</span> <span class="nav-text">v-cloak失效的问题：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#节流"><span class="nav-number">1.</span> <span class="nav-text">节流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用时间戳"><span class="nav-number">2.</span> <span class="nav-text">使用时间戳</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一版"><span class="nav-number">2.1.</span> <span class="nav-text">第一版</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用时间戳-1"><span class="nav-number">3.</span> <span class="nav-text">使用时间戳</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第二版"><span class="nav-number">3.1.</span> <span class="nav-text">第二版</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#待续-···"><span class="nav-number">4.</span> <span class="nav-text">待续 ···</span></a></li></ol></div>
             
 
           </div>

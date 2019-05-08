@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="用var声明的变量的作用域是它当前的执行上下文，它可以是嵌套的函数，也可以是声明在任何函数外的变量。let和const是块级作用域，意味着它们只能在最近的一组花括号（function、if-else 代码块或 for 循环中）中访问。1234567891011121314function foo() &amp;#123;  // 所有变量在函数中都可访问  var bar = &amp;apos;bar&amp;apos">
+<meta name="description" content="所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容： JSON.stringify(obj) ：接受一个 JavaScript 对象并将其转换为一个 JSON 字符串。 JSON.parse(string) ： 接受一个 JSON 字符串并将其转换成一个 JavaScript 对象。  1234567891011var a=&amp;#123;&amp;quot;name&amp;qu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="let、var和const">
-<meta property="og:url" content="http://yoursite.com/2019/05/04/let、var和const/index.html">
+<meta property="og:title" content="JSON对象和字符串之间的相互转换 ">
+<meta property="og:url" content="http://yoursite.com/2019/05/06/JSON对象和字符串之间的相互转换/index.html">
 <meta property="og:site_name" content="mamba">
-<meta property="og:description" content="用var声明的变量的作用域是它当前的执行上下文，它可以是嵌套的函数，也可以是声明在任何函数外的变量。let和const是块级作用域，意味着它们只能在最近的一组花括号（function、if-else 代码块或 for 循环中）中访问。1234567891011121314function foo() &amp;#123;  // 所有变量在函数中都可访问  var bar = &amp;apos;bar&amp;apos">
+<meta property="og:description" content="所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容： JSON.stringify(obj) ：接受一个 JavaScript 对象并将其转换为一个 JSON 字符串。 JSON.parse(string) ： 接受一个 JSON 字符串并将其转换成一个 JavaScript 对象。  1234567891011var a=&amp;#123;&amp;quot;name&amp;qu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-04T03:58:42.276Z">
+<meta property="og:updated_time" content="2019-05-06T02:21:58.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="let、var和const">
-<meta name="twitter:description" content="用var声明的变量的作用域是它当前的执行上下文，它可以是嵌套的函数，也可以是声明在任何函数外的变量。let和const是块级作用域，意味着它们只能在最近的一组花括号（function、if-else 代码块或 for 循环中）中访问。1234567891011121314function foo() &amp;#123;  // 所有变量在函数中都可访问  var bar = &amp;apos;bar&amp;apos">
+<meta name="twitter:title" content="JSON对象和字符串之间的相互转换 ">
+<meta name="twitter:description" content="所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容： JSON.stringify(obj) ：接受一个 JavaScript 对象并将其转换为一个 JSON 字符串。 JSON.parse(string) ： 接受一个 JSON 字符串并将其转换成一个 JavaScript 对象。  1234567891011var a=&amp;#123;&amp;quot;name&amp;qu">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/04/let、var和const/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/06/JSON对象和字符串之间的相互转换/">
 
 
 
 
 
-  <title>let、var和const | mamba</title>
+  <title>JSON对象和字符串之间的相互转换  | mamba</title>
   
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/let、var和const/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/JSON对象和字符串之间的相互转换/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张哲">
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">let、var和const</h1>
+          <h1 class="post-title" itemprop="name headline">JSON对象和字符串之间的相互转换 </h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-04T11:06:49+08:00">
-                2019-05-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T09:48:17+08:00">
+                2019-05-06
               </time>
             
 
@@ -339,11 +339,13 @@
       
 
       
-        <p>用var声明的变量的作用域是<code>它当前的执行上下文，</code>它可以是嵌套的函数，也可以是声明在任何函数外的变量。<code>let和const是块级作用域，意味着它们只能在最近的一组花括号（function、if-else 代码块或 for 循环中）中访问。</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  // 所有变量在函数中都可访问</span><br><span class="line">  var bar = &apos;bar&apos;;</span><br><span class="line">  let baz = &apos;baz&apos;;</span><br><span class="line">  const qux = &apos;qux&apos;;</span><br><span class="line"></span><br><span class="line">  console.log(bar); // bar</span><br><span class="line">  console.log(baz); // baz</span><br><span class="line">  console.log(qux); // qux</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(bar); // ReferenceError: bar is not defined</span><br><span class="line">console.log(baz); // ReferenceError: baz is not defined</span><br><span class="line">console.log(qux); // ReferenceError: qux is not defined</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if (true) &#123;</span><br><span class="line">  var bar = &apos;bar&apos;;</span><br><span class="line">  let baz = &apos;baz&apos;;</span><br><span class="line">  const qux = &apos;qux&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 用 var 声明的变量在函数作用域上都可访问</span><br><span class="line">console.log(bar); // bar</span><br><span class="line">// let 和 const 定义的变量在它们被定义的语句块之外不可访问</span><br><span class="line">console.log(baz); // ReferenceError: baz is not defined</span><br><span class="line">console.log(qux); // ReferenceError: qux is not defined</span><br></pre></td></tr></table></figure>
-<h5 id="var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。"><a href="#var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。" class="headerlink" title="var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。"></a>var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.log(foo); // undefined</span><br><span class="line">var foo = &apos;foo&apos;;</span><br><span class="line"></span><br><span class="line">console.log(baz); // ReferenceError: can&apos;t access lexical declaration &apos;baz&apos; before initialization</span><br><span class="line">let baz = &apos;baz&apos;;</span><br><span class="line"></span><br><span class="line">console.log(bar); // ReferenceError: can&apos;t access lexical declaration &apos;bar&apos; before initialization</span><br><span class="line">const bar = &apos;bar&apos;;</span><br></pre></td></tr></table></figure>
-<h5 id="用var重复声明不会报错，但let和const会。"><a href="#用var重复声明不会报错，但let和const会。" class="headerlink" title="用var重复声明不会报错，但let和const会。"></a>用var重复声明不会报错，但let和const会。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var foo = &apos;foo&apos;;</span><br><span class="line">var foo = &apos;bar&apos;;</span><br><span class="line">console.log(foo); // &quot;bar&quot;</span><br><span class="line"></span><br><span class="line">let baz = &apos;baz&apos;;</span><br><span class="line">let baz = &apos;qux&apos;; // Uncaught SyntaxError: Identifier &apos;baz&apos; has already been declared</span><br></pre></td></tr></table></figure>
-<h5 id="let和const的区别在于：let允许多次赋值，而const只允许一次。"><a href="#let和const的区别在于：let允许多次赋值，而const只允许一次。" class="headerlink" title="let和const的区别在于：let允许多次赋值，而const只允许一次。"></a>let和const的区别在于：let允许多次赋值，而const只允许一次。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 这样不会报错。</span><br><span class="line">let foo = &apos;foo&apos;;</span><br><span class="line">foo = &apos;bar&apos;;</span><br><span class="line"></span><br><span class="line">// 这样会报错。</span><br><span class="line">const baz = &apos;baz&apos;;</span><br><span class="line">baz = &apos;qux&apos;;</span><br></pre></td></tr></table></figure>
+        <h4 id="所有现代浏览器都支持-JSON-对象，有两个非常有用的方法来处理-JSON-格式的内容："><a href="#所有现代浏览器都支持-JSON-对象，有两个非常有用的方法来处理-JSON-格式的内容：" class="headerlink" title="所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容："></a>所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容：</h4><ul>
+<li>JSON.stringify(obj) ：接受一个 JavaScript 对象并将其转换为一个 JSON 字符串。</li>
+<li>JSON.parse(string) ： 接受一个 JSON 字符串并将其转换成一个 JavaScript 对象。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var a=&#123;&quot;name&quot;:&quot;tom&quot;,&quot;sex&quot;:&quot;男&quot;,&quot;age&quot;:&quot;22&quot;&#125;;</span><br><span class="line"> </span><br><span class="line">var b=&apos;&#123;&quot;name&quot;:&quot;Mike&quot;,&quot;sex&quot;:&quot;女&quot;,&quot;age&quot;:&quot;22&quot;&#125;&apos;;</span><br><span class="line"> </span><br><span class="line">var aToStr=JSON.stringify(a);</span><br><span class="line"> </span><br><span class="line">var bToObj=JSON.parse(b);</span><br><span class="line"> </span><br><span class="line">console.log(typeof(aToStr)); ?//string</span><br><span class="line"> </span><br><span class="line">console.log(typeof(bToObj));//object</span><br></pre></td></tr></table></figure>
+<p>这些方法通常用在对象上，但它们也可以在数组上使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">onst myArr = [&apos;white&apos;, &apos;yellow&apos;, &apos;red&apos;];</span><br><span class="line"> </span><br><span class="line">const myArrStr = JSON.stringify(myArr);</span><br><span class="line"> </span><br><span class="line">console.log(myArrStr);</span><br><span class="line">// &quot;[&quot;white&quot;,&quot;yellow&quot;,&quot;red&quot;]&quot;</span><br><span class="line"> </span><br><span class="line">console.log(JSON.parse(myArrStr));</span><br><span class="line">// [&quot;white&quot;,&quot;yellow&quot;,&quot;red&quot;]</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -367,8 +369,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/04/forEach和map/" rel="next" title="forEach map和for">
-                <i class="fa fa-chevron-left"></i> forEach map和for
+              <a href="/2019/05/05/求数组中的最大值和最小值/" rel="next" title="求数组中的最大值和最小值">
+                <i class="fa fa-chevron-left"></i> 求数组中的最大值和最小值
               </a>
             
           </div>
@@ -377,8 +379,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/05/事件绑定、事件监听、事件委托/" rel="prev" title="事件绑定、事件监听、事件委托">
-                事件绑定、事件监听、事件委托 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/08/防抖函数/" rel="prev" title="防抖函数">
+                防抖函数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -509,7 +511,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。"><span class="nav-number">1.</span> <span class="nav-text">var会使变量提升，这意味着变量可以在声明之前使用。let和const不会使变量提升，提前使用会报错。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用var重复声明不会报错，但let和const会。"><span class="nav-number">2.</span> <span class="nav-text">用var重复声明不会报错，但let和const会。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#let和const的区别在于：let允许多次赋值，而const只允许一次。"><span class="nav-number">3.</span> <span class="nav-text">let和const的区别在于：let允许多次赋值，而const只允许一次。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#所有现代浏览器都支持-JSON-对象，有两个非常有用的方法来处理-JSON-格式的内容："><span class="nav-number">1.</span> <span class="nav-text">所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容：</span></a></li></ol></div>
             
 
           </div>

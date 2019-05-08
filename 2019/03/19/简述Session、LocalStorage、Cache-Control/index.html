@@ -81,14 +81,14 @@
 
 <meta name="description" content="1.Cookie 服务器通过 Set-Cookie 头给客户端一串字符串 客户端每次访问相同域名的网页时，必须带上这段字符串 客户端要在一段时间内保存这个Cookie Cookie 默认在用户关闭页面后就失效，后台代码可以任意设置 Cookie 的过期时间 大小大概在 4kb 以内Cookie 存在的问题用户可以随意篡改 Cookie2.Session（不翻译） 将 SessionID（随机数）通">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简述Session、LocalStorage、Cache-Control">
+<meta property="og:title" content="简述Cookie、Session、(LocalStorage和SessionStorage)">
 <meta property="og:url" content="http://yoursite.com/2019/03/19/简述Session、LocalStorage、Cache-Control/index.html">
 <meta property="og:site_name" content="mamba">
 <meta property="og:description" content="1.Cookie 服务器通过 Set-Cookie 头给客户端一串字符串 客户端每次访问相同域名的网页时，必须带上这段字符串 客户端要在一段时间内保存这个Cookie Cookie 默认在用户关闭页面后就失效，后台代码可以任意设置 Cookie 的过期时间 大小大概在 4kb 以内Cookie 存在的问题用户可以随意篡改 Cookie2.Session（不翻译） 将 SessionID（随机数）通">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T15:21:38.506Z">
+<meta property="og:updated_time" content="2019-05-06T02:58:01.977Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简述Session、LocalStorage、Cache-Control">
+<meta name="twitter:title" content="简述Cookie、Session、(LocalStorage和SessionStorage)">
 <meta name="twitter:description" content="1.Cookie 服务器通过 Set-Cookie 头给客户端一串字符串 客户端每次访问相同域名的网页时，必须带上这段字符串 客户端要在一段时间内保存这个Cookie Cookie 默认在用户关闭页面后就失效，后台代码可以任意设置 Cookie 的过期时间 大小大概在 4kb 以内Cookie 存在的问题用户可以随意篡改 Cookie2.Session（不翻译） 将 SessionID（随机数）通">
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>简述Session、LocalStorage、Cache-Control | mamba</title>
+  <title>简述Cookie、Session、(LocalStorage和SessionStorage) | mamba</title>
   
 
 
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">简述Session、LocalStorage、Cache-Control</h1>
+          <h1 class="post-title" itemprop="name headline">简述Cookie、Session、(LocalStorage和SessionStorage)</h1>
         
 
         <div class="post-meta">
@@ -374,6 +374,20 @@
 <h3 id="8-LocalStorage-和-SessionStorage-的区别"><a href="#8-LocalStorage-和-SessionStorage-的区别" class="headerlink" title="8.LocalStorage 和 SessionStorage 的区别"></a>8.LocalStorage 和 SessionStorage 的区别</h3><ul>
 <li><code>一个不会自动过期， LocalStorage 永久有效，除非用户清理缓存</code></li>
 <li><code>一个会自动过期。SessionStorage 在用户关闭页面（会话结束）后就失效。</code></li>
+</ul>
+<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><ul>
+<li>cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。</li>
+<li>cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递。</li>
+<li>sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。</li>
+</ul>
+<h6 id="存储大小："><a href="#存储大小：" class="headerlink" title="存储大小："></a>存储大小：</h6><ul>
+<li>cookie数据大小不能超过4k。</li>
+<li>sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。</li>
+</ul>
+<h6 id="有期时间："><a href="#有期时间：" class="headerlink" title="有期时间："></a>有期时间：</h6><ul>
+<li>localStorage    存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；</li>
+<li>sessionStorage  数据在当前浏览器窗口关闭后自动删除。</li>
+<li>cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭</li>
 </ul>
 
       
@@ -488,7 +502,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -541,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Cookie"><span class="nav-number">1.</span> <span class="nav-text">1.Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Session（不翻译）"><span class="nav-number">2.</span> <span class="nav-text">2.Session（不翻译）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-LocalStorage"><span class="nav-number">3.</span> <span class="nav-text">3.LocalStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-SessionStorage（会话存储）"><span class="nav-number">4.</span> <span class="nav-text">4.SessionStorage（会话存储）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Session-与-Cookie-的关系"><span class="nav-number">5.</span> <span class="nav-text">5.Session 与 Cookie 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Cookie-和-Session-的区别"><span class="nav-number">6.</span> <span class="nav-text">6.Cookie 和 Session 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Cookie-和-LocalStorage-的区别"><span class="nav-number">7.</span> <span class="nav-text">7.Cookie 和 LocalStorage 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-LocalStorage-和-SessionStorage-的区别"><span class="nav-number">8.</span> <span class="nav-text">8.LocalStorage 和 SessionStorage 的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Cookie"><span class="nav-number">1.</span> <span class="nav-text">1.Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Session（不翻译）"><span class="nav-number">2.</span> <span class="nav-text">2.Session（不翻译）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-LocalStorage"><span class="nav-number">3.</span> <span class="nav-text">3.LocalStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-SessionStorage（会话存储）"><span class="nav-number">4.</span> <span class="nav-text">4.SessionStorage（会话存储）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Session-与-Cookie-的关系"><span class="nav-number">5.</span> <span class="nav-text">5.Session 与 Cookie 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Cookie-和-Session-的区别"><span class="nav-number">6.</span> <span class="nav-text">6.Cookie 和 Session 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Cookie-和-LocalStorage-的区别"><span class="nav-number">7.</span> <span class="nav-text">7.Cookie 和 LocalStorage 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-LocalStorage-和-SessionStorage-的区别"><span class="nav-number">8.</span> <span class="nav-text">8.LocalStorage 和 SessionStorage 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#总结："><span class="nav-number">8.0.1.</span> <span class="nav-text">总结：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#存储大小："><span class="nav-number">8.0.1.1.</span> <span class="nav-text">存储大小：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#有期时间："><span class="nav-number">8.0.1.2.</span> <span class="nav-text">有期时间：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

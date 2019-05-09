@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="父子组件： 父对子：prop传递数据 子对父：$emit触发自定义事件  如果父组件传递给子组件的是一个引用类型的数据，在子组件内部对数据源进行修改的时候，父组件会同步修改。为了避免同步修改，需要对其进行深复制123456props:[&amp;apos;obj&amp;apos;],data()&amp;#123;   return &amp;#123;     myObj: JSON.parse(JSON.stringify">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue组件之间的通信">
 <meta property="og:url" content="http://yoursite.com/2019/03/29/Vue组件之间的通信/index.html">
 <meta property="og:site_name" content="mamba">
+<meta property="og:description" content="父子组件： 父对子：prop传递数据 子对父：$emit触发自定义事件  如果父组件传递给子组件的是一个引用类型的数据，在子组件内部对数据源进行修改的时候，父组件会同步修改。为了避免同步修改，需要对其进行深复制123456props:[&amp;apos;obj&amp;apos;],data()&amp;#123;   return &amp;#123;     myObj: JSON.parse(JSON.stringify">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-29T00:36:09.149Z">
+<meta property="og:updated_time" content="2019-05-09T09:46:00.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue组件之间的通信">
+<meta name="twitter:description" content="父子组件： 父对子：prop传递数据 子对父：$emit触发自定义事件  如果父组件传递给子组件的是一个引用类型的数据，在子组件内部对数据源进行修改的时候，父组件会同步修改。为了避免同步修改，需要对其进行深复制123456props:[&amp;apos;obj&amp;apos;],data()&amp;#123;   return &amp;#123;     myObj: JSON.parse(JSON.stringify">
 
 
 
@@ -336,7 +339,17 @@
       
 
       
-        
+        <h4 id="父子组件："><a href="#父子组件：" class="headerlink" title="父子组件："></a>父子组件：</h4><ul>
+<li>父对子：prop传递数据</li>
+<li>子对父：$emit触发自定义事件</li>
+</ul>
+<p>如果父组件传递给子组件的是一个引用类型的数据，在子组件内部对数据源进行修改的时候，父组件会同步修改。<br>为了避免同步修改，需要对其进行深复制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">props:[&apos;obj&apos;],</span><br><span class="line">data()&#123;</span><br><span class="line">   return &#123;</span><br><span class="line">     myObj: JSON.parse(JSON.stringify(this.obj))</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="爷孙组件："><a href="#爷孙组件：" class="headerlink" title="爷孙组件："></a>爷孙组件：</h4><p>使用两次 v-on 通过爷爷爸爸通信，爸爸儿子通信实现爷孙通信</p>
+<h4 id="任意组件："><a href="#任意组件：" class="headerlink" title="任意组件："></a>任意组件：</h4><ul>
+<li>使用 eventBus = new Vue() 来通信，eventBus.$on 和 eventBus.$emit 是主要API</li>
+<li>使用 Vuex 通信</li>
+</ul>
+
       
     </div>
     
@@ -424,8 +437,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -440,7 +462,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -483,6 +505,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#父子组件："><span class="nav-number">1.</span> <span class="nav-text">父子组件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#爷孙组件："><span class="nav-number">2.</span> <span class="nav-text">爷孙组件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任意组件："><span class="nav-number">3.</span> <span class="nav-text">任意组件：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

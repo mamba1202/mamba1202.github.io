@@ -269,6 +269,425 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/03/初识原型与原型链/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张哲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mamba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/03/初识原型与原型链/" itemprop="url">初识原型与原型链</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-03T20:16:24+08:00">
+                2019-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言：原型与原型链两个名词对于大部分的前端初学者来说，对这两个概念很模糊，无从入手，而且还可能会一脸懵逼。本文将从全局对象引入，分别介绍Number、Boolean、String、Object四个对象，然后再详述原型的相关知识。"><a href="#前言：原型与原型链两个名词对于大部分的前端初学者来说，对这两个概念很模糊，无从入手，而且还可能会一脸懵逼。本文将从全局对象引入，分别介绍Number、Boolean、String、Object四个对象，然后再详述原型的相关知识。" class="headerlink" title="前言：原型与原型链两个名词对于大部分的前端初学者来说，对这两个概念很模糊，无从入手，而且还可能会一脸懵逼。本文将从全局对象引入，分别介绍Number、Boolean、String、Object四个对象，然后再详述原型的相关知识。"></a>前言：原型与原型链两个名词对于大部分的前端初学者来说，对这两个概念很模糊，无从入手，而且还可能会一脸懵逼。本文将从全局对象引入，分别介绍Number、Boolean、String、Object四个对象，然后再详述原型的相关知识。</h3><h4 id="1、全局对象-window"><a href="#1、全局对象-window" class="headerlink" title="1、全局对象 window"></a>1、全局对象 window</h4><p>首先我们还是先不说原型，先了解一下全局对象以及其中的window对象。</p>
+<h5 id="全局对象（global-object）："><a href="#全局对象（global-object）：" class="headerlink" title="全局对象（global object）："></a>全局对象（global object）：</h5><p>通俗的说就是在脚本的任意地方都可以调用的对象，在浏览器中即window对象。</p>
+<h5 id="window对象中"><a href="#window对象中" class="headerlink" title="window对象中:"></a>window对象中:</h5><p>如<code>alert()</code>方法可以写成<code>window.alert()</code>，或者省去window，直接写做<code>alert()。window对象</code>分两种：</p>
+<ul>
+<li>一种是ECMAScript规定必须得有的，比如parseInt 、 parseFloat，以及Number()  、Boolean() 、String() 、Object() 等。</li>
+<li><p>第二种是各个浏览器有的，因为没有写如标准，所以这些方法在各个浏览器的表现形式都有所不同，比如：<code>alert() 、prompt() 、confirm() 、console() 等方法以及 document 、history</code>等对象。</p>
+<h4 id="2、简单类型与对象"><a href="#2、简单类型与对象" class="headerlink" title="2、简单类型与对象"></a>2、简单类型与对象</h4></li>
+<li><p>众所周知，如果我们想声明一个数值类型的变量，可以这么写：<code>var n1 = 1;</code>，这种写法声明的是一个简单类型；或者这么写：<code>var n2 = new Number(1)</code>; ，这种写法下，n2 其实是对象，可以通过<code>n2.valueOf()</code>来获取该对象的值，可以用<code>n2.toString()</code>;方法将其转换成字符串。</p>
+</li>
+<li><p>这两种写法所声明的变量最大的不同是，他们在内存中的存储方式是不同的，n1直接声明，那么他就是简单的数据类型，存储在stack内存中，而n2则是声明了一个对象，stack内存中存储着该对象的地址，对象的内容存储在heap内存中。</p>
+</li>
+<li><p>但是日常我们没有用n2的写法，依然可以使用<code>valueOf() 方法 和toSting()</code>方法，既然有简单的方法也可以不影响日常操作，为什么还要创建n1这种复杂的写法呢？很显然这里就隐藏着一段JS的黑历史（为了让JavaScript看起来更像Java），这里不细说，有兴趣的同学可以自行Google。</p>
+</li>
+<li><p>那么JS如何做到使用n1的写法还可以达到n2的用法呢？那是因为如果你调用了如valueOf方法，那么JS会创建一个临时对象，然后调用该对象的方法，调用结束临时对象就被垃圾回收。那么接下来介绍一个易错点在：</p>
+</li>
+</ul>
+<ul>
+<li><code>var num = 1; num.xxx = 2</code>; 这句话会报错吗?答案是不会，后一句为num添加属性时，JS已经为其创建了一个临时对象，为对象添加属性怎么会报错呢？<br>然后如果想读取xxx这个属性num.xxx，<code>结果是undefined</code>，<code>因为为num添加完属性后，临时对象就被垃圾回收，num本质上还是一个数值，而数值本身是没有xxx这个属性的（有个这属性的对象已经被删了）</code>。</li>
+</ul>
+<h4 id="3、Number对象"><a href="#3、Number对象" class="headerlink" title="3、Number对象"></a>3、Number对象</h4><p>Number的常用属性有：</p>
+<ul>
+<li><code>Number.valueOf()</code>; 获取对象本身的值</li>
+<li><p><code>Number.toString()</code>; 将数值转化为字符串</p>
+<h5 id="注：number类型的的toString方法可以加参数，表示按照什么进制来解析（不加参数默认按十进制解析），如："><a href="#注：number类型的的toString方法可以加参数，表示按照什么进制来解析（不加参数默认按十进制解析），如：" class="headerlink" title="注：number类型的的toString方法可以加参数，表示按照什么进制来解析（不加参数默认按十进制解析），如："></a>注：number类型的的toString方法可以加参数，表示按照什么进制来解析（不加参数默认按十进制解析），如：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(100).toString(); // &quot;100&quot;</span><br><span class="line">(100).toString(2); // &quot;1100100&quot;</span><br><span class="line">100..toString(16); // &quot;64&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Number.toFixed()</code>; 将其转换为小数，<br>如：2..toFixed(3); // “2.000”</p>
+</li>
+<li><code>Number.toExponential()</code>; 将其转化为科学计数法，<br>如：200..toExponential(); // “2e+2”</li>
+</ul>
+<h4 id="4、String对象"><a href="#4、String对象" class="headerlink" title="4、String对象"></a>4、String对象</h4><p>String的常用属性有：</p>
+<ul>
+<li><p><code>String.charAt()</code>;  获取字符串中某一位的字符<br>如：”hello world”.charAt(1);  // “e”</p>
+</li>
+<li><p><code>String.charCodeAt()</code>;  获取字符串中某一位的字符的Unicode编码<br>如：”hello world”.charCodeAt(1); // 101</p>
+</li>
+<li><p><code>String.trim()</code>; 删除字符串中多余的空格<br>如：’ hello world ‘.trim(); // “hello world”</p>
+</li>
+<li><p><code>String1.concat(String2)</code>; 连接字符串1和字符串2<br>如：”hello”.concat(“world”); // “helloworld”</p>
+</li>
+</ul>
+<p>-<code>String.slice(start,end)</code>; 截取字符串，从start到end<br>如：”hello world”.slice(3,5); // “lo”</p>
+<ul>
+<li><p><code>String.replace(&#39;xx&#39;,&#39;yy&#39;)</code>; 将字符串中的xx替换成yy(只能替换第一次出现的字符)<br>如：”hello world”.replace(‘o’,’a’) // “hella world”</p>
+</li>
+<li><p><code>String.indexOf()</code>; 搜索字符串中的内容(只检测到第一次出现的字符)，没搜到返回-1<br>如：”hello world”.indexOf(‘o’); // 4<br>“hello world”.indexOf(‘p’); // -1</p>
+</li>
+<li><p><code>String.split()</code>; 分隔<br>如：”hello world”.split(‘ ‘); // [“hello”, “world”]</p>
+</li>
+<li><p><code>String.includes(xx)</code>; 检查字符串中是否包含xx<br>如：”hello world”.includes(‘aa’) ; //false</p>
+</li>
+<li><p><code>String.substr(start，len)</code>; 截取<br>如：”hello world”.substr(3,2); // “lo”</p>
+</li>
+</ul>
+<h4 id="5、Boolean对象"><a href="#5、Boolean对象" class="headerlink" title="5、Boolean对象"></a>5、Boolean对象</h4><p>这里要介绍一个两种不同的赋值方法下容易出错的地方。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var b1 = false;</span><br><span class="line">var b2 = new Boolean(false);</span><br><span class="line">if(b1) &#123; console.log(&apos;b1&apos;) &#125; ;</span><br><span class="line">if(b2) &#123; console.log(&apos;b2&apos;) &#125; ;</span><br><span class="line">///打印结果为 b2</span><br></pre></td></tr></table></figure></p>
+<p>上述代码之中，b1和b2的值都是false，而使用if判断语句，却将b2转化为了true，那是因为<code>b2本身的数据类型是对象，而对象不论是否是空对象，转化成boolean都是true。</code></p>
+<h4 id="6、Object对象"><a href="#6、Object对象" class="headerlink" title="6、Object对象"></a>6、Object对象</h4><p>Object对象，两种赋值方法是一样的，没有任何区别。<br>不过需要注意的是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj1 = &#123;&#125;;</span><br><span class="line">var obj2 = &#123;&#125;;</span><br><span class="line">obj1 === obj2; // false</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码中，同样都是空数组，但是他们的值是不相等的，因为对象在stack内存中存储的只是其内容在heap内存中的地址，而每个对象的内容在heap内存中的地址是不会一样的，<code>所以对象与对象一般都是不相等的。</code></p>
+<h4 id="7、公有属性-原型"><a href="#7、公有属性-原型" class="headerlink" title="7、公有属性 / 原型"></a>7、公有属性 / 原型</h4><p>那么说了这么多，接下来即将引入原型这个概念。<br>上面说了四种对象，而他们都有相同的一些属性，比如valueOf，toString等，难道JS每次声明一个对象都要写一次这些方法嘛？答案是否定的，因为真要这么写的话会非常占用内存，所以实际上JS引擎是这么做的：<code>把所有的对象共有的属性全部放在heap内存的一个地方，当需要使用的时候，引用这个对象即可，这么操作就会减少不必要的内存浪费，而这个公有属性，就是传说中的原型。</code></p>
+<ul>
+<li><code>__proto__</code>就是这些公有属性的引用。</li>
+<li><code>Object.__proto__</code>指向的就是对象的公有属性。</li>
+<li>而比如Number对象、String对象、Boolean对象，他们还有各自独有的公用属性，他们的<code>__proto__</code>指向的就是各自的独有属性，这些独有属性的<code>__proto__</code>指向对象的公有属性。<br>由此可知<code>obj1.toString === obj2.toString</code>这句话是正确的。</li>
+</ul>
+<img src="/2019/02/03/初识原型与原型链/1.png" title="This is an 1 image">
+<h5 id="图中红色的线，就组成了一条原型链。"><a href="#图中红色的线，就组成了一条原型链。" class="headerlink" title="图中红色的线，就组成了一条原型链。"></a>图中红色的线，就组成了一条原型链。</h5><img src="/2019/02/03/初识原型与原型链/2.png" title="This is an 2 image">
+<p>JS引擎一出来就会把上图的这棵树画好让各个对象来引用。而浏览器一开始就有了原型对象，用Object.prototype指向原型，防止其因为没有对象引用而被回收。<br>则出现了一些等式：</p>
+<ul>
+<li><code>obj.__proto__ === Object.prototype</code>即对象的<code>__proto__</code>指向<code>Object对象的prototype</code></li>
+<li><code>num.__proto__ === Number.prototype</code> 即数值的<code>__proto__</code>指向<code>Number对象的共有属性</code></li>
+<li><code>num.__proto__.__proto__ === Object.prototype</code>即Number对象的公有属性的<code>__proto__</code>指向<code>Object对象的公有属性</code>。</li>
+<li>其他如Boolean对象、String对象和Number对象同理。</li>
+</ul>
+<p>那么<code>__proto__与pprototype</code>到底代表着什么，有什么作用，区别是什么呢，请看下文。</p>
+<h4 id="8、proto-与-prototype"><a href="#8、proto-与-prototype" class="headerlink" title="8、proto 与 prototype"></a>8、<strong>proto</strong> 与 prototype</h4><img src="/2019/02/03/初识原型与原型链/3.png" title="This is an 3 image">
+<p>上图是我们还没有写代码的时候，浏览器内存中已经构建好了的内容。</p>
+<h5 id="由图可知，prototype是浏览器本身就写好的。"><a href="#由图可知，prototype是浏览器本身就写好的。" class="headerlink" title="由图可知，prototype是浏览器本身就写好的。"></a>由图可知，prototype是浏览器本身就写好的。</h5><h5 id="当我们写了一句代码var-s-new-String-‘-hello-‘-以后："><a href="#当我们写了一句代码var-s-new-String-‘-hello-‘-以后：" class="headerlink" title="当我们写了一句代码var s = new String(‘ hello ‘) 以后："></a>当我们写了一句代码var s = new String(‘ hello ‘) 以后：</h5><img src="/2019/02/03/初识原型与原型链/4.png" title="This is an 4 image">
+<h5 id="我们创建的对象的-proto-会用来指向原有的String对象，使得我们可以调用String对象的公有属性。"><a href="#我们创建的对象的-proto-会用来指向原有的String对象，使得我们可以调用String对象的公有属性。" class="headerlink" title="我们创建的对象的__proto__会用来指向原有的String对象，使得我们可以调用String对象的公有属性。"></a>我们创建的对象的<code>__proto__</code>会用来指向原有的String对象，使得我们可以调用String对象的公有属性。</h5><p>于是我们有了以下结论：</p>
+<h5 id="proto-是某对象公用属性的引用，是为了用户使用其共用属性中的方法而存在的-。"><a href="#proto-是某对象公用属性的引用，是为了用户使用其共用属性中的方法而存在的-。" class="headerlink" title="proto 是某对象公用属性的引用，是为了用户使用其共用属性中的方法而存在的 。"></a><strong>proto</strong> 是某对象公用属性的引用，是为了用户使用其共用属性中的方法而存在的 。</h5><h5 id="prototype-是浏览器写的，本身就存在，是某对象的共同属性的引用，为了不让对象的公用属性因没有被调用而被垃圾回收而存在。"><a href="#prototype-是浏览器写的，本身就存在，是某对象的共同属性的引用，为了不让对象的公用属性因没有被调用而被垃圾回收而存在。" class="headerlink" title="prototype 是浏览器写的，本身就存在，是某对象的共同属性的引用，为了不让对象的公用属性因没有被调用而被垃圾回收而存在。"></a>prototype 是浏览器写的，本身就存在，是某对象的共同属性的引用，为了不让对象的公用属性因没有被调用而被垃圾回收而存在。</h5><h4 id="9、一些烧脑的等式"><a href="#9、一些烧脑的等式" class="headerlink" title="9、一些烧脑的等式"></a>9、一些烧脑的等式</h4><p>众所周知，<code>var 对象 = new 函数</code>;是JS中很基本的语句，如<code>var str = new String(&#39;aaa&#39;)</code>，因此就有了下面这句等式：</p>
+<ul>
+<li>对象<code>.__proto__ === 函数.prototype</code> ，即对象的<code>__proto__</code>指向了构造这个对象的函数的<code>prototype</code>。 因此我们还知道了<code>__proto__</code> 是对象我的属性，<code>prototype</code>是函数的属性。</li>
+</ul>
+<p>于是我们可以根据上述等式做一些推论：</p>
+<ul>
+<li><p>首先我们知道，<code>函数的prototype是对象</code>，这个对象对应的就是最简单的函数Object，所以替换的到下面的式子：<br><code>函数.prototype.__proto__ === Object.prototype</code></p>
+</li>
+<li><p>由于函数本身即是函数（最优先视为函数），也是对象，而函数的构造函数是Function ，所以替换得：<br><code>函数.__proto__ === Function.prototype</code></p>
+</li>
+<li><p>Function即是对象，也是函数，但他优先是个函数，所以将Function替换上面的式子，则变为：<br><code>Function.__proto__ === Function.prototype</code></p>
+</li>
+<li><p>而<code>Function.prototype</code>也是对象，是普通的对象，所以其对应的函数使Object，替换得：<br><code>Funciton.prototype.__proto__=== Object.prototype</code></p>
+</li>
+</ul>
+<h4 id="10、神奇的Function"><a href="#10、神奇的Function" class="headerlink" title="10、神奇的Function"></a>10、神奇的Function</h4><p>根据上面的各种推论，我们发现了其中最神奇的东西，<code>Function</code>，他即是函数，也是对象，所以他有函数的<code>prorotype</code>，也有对象的<code>__proto__</code>，所以出现了下图的情况：</p>
+<img src="/2019/02/03/初识原型与原型链/5.png" title="This is an 5 image">
+<p>即<code>Function.prototype</code> 与<code>Funciton.__proto__</code>互相引用。<br>另外需要注意的一点：<br><code>Object.__proto__ === Function.prototype</code>，因为 Function 是 Object 的构造函数。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/30/JS里的数据类型转换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张哲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mamba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/30/JS里的数据类型转换/" itemprop="url">JS里的数据类型转换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-30T10:25:07+08:00">
+                2019-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="如何将其他的数据类型转换成String字符串类型？"><a href="#如何将其他的数据类型转换成String字符串类型？" class="headerlink" title="如何将其他的数据类型转换成String字符串类型？"></a>如何将其他的数据类型转换成String字符串类型？</h3><p>注：下面介绍的三种转换成字符串的方法都不适用于对象object，所得结果都是”[object Object]”,但是对于函数和数组是可以转换的</p>
+<ul>
+<li>?.toString()</li>
+<li><p>String(?)</p>
+</li>
+<li><p>‘’+ ?</p>
+<h4 id="上面的问号？代表是其他数据类型，这样可以快速得知使用方法"><a href="#上面的问号？代表是其他数据类型，这样可以快速得知使用方法" class="headerlink" title="上面的问号？代表是其他数据类型，这样可以快速得知使用方法"></a>上面的问号？代表是其他数据类型，这样可以快速得知使用方法</h4></li>
+</ul>
+<h3 id="方法1：-toString"><a href="#方法1：-toString" class="headerlink" title="方法1：?.toString()"></a>方法1：?.toString()</h3><p>toString方法适用于<code>number类型和boolean类型</code>，但是将数字转换为字符串时，要特别注意，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//将数字转换为字符串错误写法</span><br><span class="line">1.toString() //Uncaught SyntaxError: Invalid or unexpected token</span><br><span class="line">//正确写法</span><br><span class="line">(1).toString() //&quot;1&quot;</span><br><span class="line">true.toString() //&quot;true&quot;</span><br></pre></td></tr></table></figure>
+<p>但是对于null和undefined，使用这种方法会报错，如：<br>报错信息揭秘：<br>不能读null的toString方法，null没有toString的api，所以报错，undefined类似</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">null.toString() //Uncaught TypeError: Cannot read property &apos;toString&apos; of null</span><br><span class="line">undefined.toString() //Uncaught TypeError: Cannot read property &apos;toString&apos; of undefined</span><br></pre></td></tr></table></figure>
+<p>对于object，toSring方法结果不正确，结果永远是”[object Object]”，函数和数组是比较特别,具体请看代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//错误写法</span><br><span class="line">&#123;&#125;.toString() //Uncaught SyntaxError: Unexpected token .</span><br><span class="line">//正确写法</span><br><span class="line">(&#123;&#125;).toString() //&quot;[object Object]&quot;</span><br><span class="line">var obj = &#123;&#125;</span><br><span class="line">obj.toString() //结果为 &quot;[object Object]&quot;</span><br><span class="line"></span><br><span class="line">//函数</span><br><span class="line">//错误写法</span><br><span class="line">function()&#123;&#125;.toString() //Uncaught SyntaxError: Unexpected token (</span><br><span class="line">//正确写法</span><br><span class="line">(function()&#123;&#125;).toString()  //&quot;function()&#123;&#125;&quot;</span><br><span class="line"></span><br><span class="line">//数组</span><br><span class="line">[].toString()  //&quot;&quot; </span><br><span class="line">[1,2,3].toString() //&quot;1,2,3&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="方法2：String"><a href="#方法2：String" class="headerlink" title="方法2：String(?)"></a>方法2：String(?)</h3><p>String() 该方法适用于所有数据类型（除了对象，结果同toString()）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String(123)  //&quot;123&quot;</span><br><span class="line">String(true) //&quot;true&quot;</span><br><span class="line">String(null) //&quot;null&quot;</span><br><span class="line">String(undefined) //&quot;undefined&quot;</span><br><span class="line">String(&#123;name:&apos;frank&apos;&#125;) //&quot;[object Object]&quot;</span><br><span class="line">String([1,2,3])  //&quot;1,2,3&quot;</span><br><span class="line">String(function()&#123;&#125;) //&quot;function()&#123;&#125;&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="方法3：’’-（老司机做法）"><a href="#方法3：’’-（老司机做法）" class="headerlink" title="方法3：’’+ ?（老司机做法）"></a>方法3：’’+ ?（老司机做法）</h3><p>注：这种方法的原理是：<code>‘+’ 运算符只能相加相同的数据类型，如果两边的数据类型不同，他会优先将其转换成字符串来相加。</code><br>‘’+ ? 即使用+运算符加上空字符串（同样对object无效）该方法适用于所有数据类型（除了对象，结果同toString()）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1 + &apos;&apos;   //&quot;1&quot;</span><br><span class="line">false + &apos;&apos;  //&quot;false&quot;</span><br><span class="line">null + &apos;&apos;  //&quot;null&quot;</span><br><span class="line">undefined + &apos;&apos;  //&quot;undefined&quot;</span><br><span class="line">[1,2,3] + &apos;&apos;  //&quot;1,2,3&quot;</span><br><span class="line"></span><br><span class="line">var obj = &#123;name : &apos;frank&apos;&#125;</span><br><span class="line">obj + &apos;&apos;  //&quot;[object Object]&quot;</span><br><span class="line"></span><br><span class="line">function()&#123;&#125; + &apos;&apos; //Uncaught SyntaxError: Unexpected token (</span><br><span class="line">(function()&#123;&#125;) + &apos;&apos;  //&quot;function()&#123;&#125;&quot;</span><br><span class="line"></span><br><span class="line">[1,2,3] + &apos;&apos;  //&quot;1,2,3&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="踩坑时间到"><a href="#踩坑时间到" class="headerlink" title="踩坑时间到"></a>踩坑时间到</h4><p>小谷问：1+’1’的结果是多少？<br>小白说：你这是看不起我吗？2啊<br>小谷说：你踩坑啦，当然不是，具体，我一一给你道来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1+&apos;1&apos;  //&quot;11&quot;</span><br><span class="line">//上面的做法，相当于是下面这个步骤，根据上面的那个原理得出</span><br><span class="line">(1).toString() + &apos;1&apos;  //&quot;11&quot;</span><br></pre></td></tr></table></figure>
+<p>小Tips：</p>
+<ul>
+<li>三种转换成字符串的方法对于对象来说，是特殊的</li>
+<li>使用这种方法?.toString()报错，只需给需要转换的东西加上个括号，具体例子请看上面</li>
+</ul>
+<h3 id="如何将其他的数据类型转换成Number数值类型？"><a href="#如何将其他的数据类型转换成Number数值类型？" class="headerlink" title="如何将其他的数据类型转换成Number数值类型？"></a>如何将其他的数据类型转换成Number数值类型？</h3><p>注：parseInt逐个解析字符，而Number函数整体转换字符串的类型。parseInt,parseFloat和Number函数都会自动过滤一个字符串前导和后缀的空格。parseInt(?,?)说明parseInt可以有两个参数</p>
+<ul>
+<li>Number(?)</li>
+<li>parseInt(?,?)</li>
+<li>parseFloat(?)</li>
+<li>‘?’ - 0</li>
+<li>‘?’ +</li>
+</ul>
+<h3 id="方法1：Number"><a href="#方法1：Number" class="headerlink" title="方法1：Number(?)"></a>方法1：Number(?)</h3><p>使用Number函数，可以将任意类型的值转化成数值。Number函数将字符串转为数值，要比parseInt函数严格很多。<code>基本上，只要有一个字符无法转成数值，整个字符串就会被转为NaN。</code><br>下面分成两种情况讨论，一种是参数是原始类型的值，另一种是参数是对象。</p>
+<h4 id="1-原始类型值"><a href="#1-原始类型值" class="headerlink" title="(1)原始类型值"></a>(1)原始类型值</h4><p>示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 数值：转换后还是原来的值</span><br><span class="line">Number(324) // 324</span><br><span class="line"></span><br><span class="line">// 字符串：如果可以被解析为数值，则转换为相应的数值</span><br><span class="line">Number(&apos;324&apos;) // 324</span><br><span class="line"></span><br><span class="line">// 字符串：如果不可以被解析为数值，返回 NaN</span><br><span class="line">Number(&apos;324abc&apos;) // NaN</span><br><span class="line"></span><br><span class="line">// 空字符串转为0</span><br><span class="line">Number(&apos;&apos;) // 0</span><br><span class="line"></span><br><span class="line">// 布尔值：true 转成 1，false 转成 0</span><br><span class="line">Number(true) // 1</span><br><span class="line">Number(false) // 0</span><br><span class="line"></span><br><span class="line">// undefined：转成 NaN</span><br><span class="line">Number(undefined) // NaN</span><br><span class="line"></span><br><span class="line">// null：转成0</span><br><span class="line">Number(null) // 0</span><br><span class="line"></span><br><span class="line">Number(&apos;42 cats&apos;) // NaN</span><br></pre></td></tr></table></figure>
+<h4 id="2-对象"><a href="#2-对象" class="headerlink" title="(2)对象"></a>(2)对象</h4><p>Number方法的参数是对象时，将返回NaN，除非是包含单个数值的数组。<br>示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Number(&#123;a: 1&#125;) // NaN</span><br><span class="line">Number([1, 2, 3]) // NaN</span><br><span class="line">Number([5]) // 5</span><br></pre></td></tr></table></figure>
+<p>Number背后的转换规则比较复杂。<br>第一步，调用对象自身的valueOf方法。如果返回原始类型的值，则直接对该值使用Number函数，不再进行后续步骤。<br>第二步，如果valueOf方法返回的还是对象，则改为调用对象自身的toString方法。如果toString方法返回原始类型的值，则对该值使用Number函数，不再进行后续步骤。<br>第三步，如果toString方法返回的是对象，就报错。</p>
+<h3 id="方法2：parseInt"><a href="#方法2：parseInt" class="headerlink" title="方法2：parseInt()"></a>方法2：parseInt()</h3><p>parseInt方法用于将字符串转为整数。<br>如：<code>parseInt(‘123’) // 123</code><br>如果字符串头部有空格，空格会被自动去除。parseInt(‘ 81’) // 81<br>如果parseInt的参数不是字符串，则会先转为字符串再转换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parseInt(1.23) // 1</span><br><span class="line">// 等同于</span><br><span class="line">parseInt(&apos;1.23&apos;) // 1</span><br></pre></td></tr></table></figure>
+<p>字符串转为整数的时候，是一个个字符依次转换，如果遇到不能转为数字的字符，就不再进行下去，返回已经转好的部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;8a&apos;) // 8</span><br><span class="line">parseInt(&apos;15e2&apos;) // 15</span><br><span class="line">parseInt(&apos;15px&apos;) // 15</span><br></pre></td></tr></table></figure>
+<p>如果字符串的第一个字符不能转化为数字（后面跟着数字的正负号除外），返回NaN。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;abc&apos;) // NaN</span><br><span class="line">parseInt(&apos;.3&apos;) // NaN</span><br><span class="line">parseInt(&apos;&apos;) // NaN</span><br><span class="line">parseInt(&apos;+&apos;) // NaN</span><br><span class="line">parseInt(&apos;+1&apos;) // 1</span><br></pre></td></tr></table></figure>
+<p>注：parseInt()方法默认转换成十进制，不过需要注意的是，如果参数本身就是number类型，<code>且是0x开头（16进制），或0o开头（八进制），0b开头（二进制），0开头且后面的数字没有8和9（视为八进制），</code>那么parseInt方法会将其以相应的进制转换成十进制展示出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parseInt(0o377)  //255</span><br><span class="line">parseInt(0xff)  //255</span><br><span class="line">parseInt(0b11)  //3</span><br></pre></td></tr></table></figure>
+<p>如果<code>字符串以0x或0X开头，parseInt会将其按照十六进制数解析。</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;0x10&apos;) // 16</span><br></pre></td></tr></table></figure></p>
+<p>如果字符串以0开头，将其按照10进制解析。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;011&apos;) // 11</span><br></pre></td></tr></table></figure></p>
+<p>因此，<code>为了防止意外解析成其他进制，建议添加第二个参数按照特定进制解析：</code>如：<br>如果第二个参数不是数值，会被自动转为一个整数。这个整数只有在2到36之间，才能得到有意义的结果，超出这个范围，则返回NaN。如果第二个参数是0、undefined和null，则直接忽略。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;1000&apos;, 2) // 8</span><br><span class="line">parseInt(&apos;1000&apos;, 6) // 216</span><br><span class="line">parseInt(&apos;1000&apos;, 8) // 512</span><br><span class="line">parseInt(&apos;10&apos;, 37) // NaN</span><br><span class="line">parseInt(&apos;10&apos;, 1) // NaN</span><br><span class="line">parseInt(&apos;10&apos;, 0) // 10</span><br><span class="line">parseInt(&apos;10&apos;, null) // 10</span><br><span class="line">parseInt(&apos;10&apos;, undefined) // 10</span><br></pre></td></tr></table></figure>
+<h3 id="方法3：parseFloat"><a href="#方法3：parseFloat" class="headerlink" title="方法3：parseFloat()"></a>方法3：parseFloat()</h3><p>parseFloat方法用于将一个字符串转为浮点数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parseFloat(&apos;3.14&apos;) // 3.14</span><br></pre></td></tr></table></figure></p>
+<p>如果字符串符合科学计数法，则会进行相应的转换。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">parseFloat(&apos;314e-2&apos;) // 3.14</span><br><span class="line">parseFloat(&apos;0.0314E+2&apos;) // 3.14</span><br></pre></td></tr></table></figure></p>
+<p>如果字符串包含不能转为浮点数的字符，则不再进行往后转换，返回已经转好的部分。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parseFloat(&apos;3.14more non-digit characters&apos;) // 3.14</span><br></pre></td></tr></table></figure></p>
+<p>parseFloat与Number的对比</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">parseFloat(true)  // NaN</span><br><span class="line">Number(true) // 1</span><br><span class="line"></span><br><span class="line">parseFloat(null) // NaN</span><br><span class="line">Number(null) // 0</span><br><span class="line"></span><br><span class="line">parseFloat(&apos;&apos;) // NaN</span><br><span class="line">Number(&apos;&apos;) // 0</span><br><span class="line"></span><br><span class="line">parseFloat(&apos;123.45#&apos;) // 123.45</span><br><span class="line">Number(&apos;123.45#&apos;) // NaN</span><br></pre></td></tr></table></figure>
+<h3 id="方法4：’-’-0"><a href="#方法4：’-’-0" class="headerlink" title="方法4：’?’ - 0"></a>方法4：’?’ - 0</h3><p>字符串 - 0。如：’11’ - 0 //11`</p>
+<h3 id="方法5：-‘-’"><a href="#方法5：-‘-’" class="headerlink" title="方法5：  + ‘?’"></a>方法5：  + ‘?’</h3><p>另辟蹊径的方法： + 字符串，这里的+并不是取正值的意思，负数一样可行，如：+ ‘-011’ ; // -11<br>注：上面介绍的使用运算符的转换方法，字符串不能有除了数字外的其他字符<code>（正负号，表示进制的标识除外）</code>，字符串中，0b、0x、0o开头会以对应表示的进制解析，如果是’011’，则会解析成十进制而不是二进制，<code>小数同样可以用这两种方法进行转换</code><br>小Tips：</p>
+<ul>
+<li>Number方法基本上，只要有一个字符无法转成数值，整个字符串就会被转为NaN</li>
+<li>parseInt方法为了防止意外解析成其他进制，建议添加第二个参数按照特定进制解析</li>
+<li>parseFloat会将空字符串转为NaN</li>
+</ul>
+<h3 id="如何将其他数据类型转换为Boolean布尔类型？"><a href="#如何将其他数据类型转换为Boolean布尔类型？" class="headerlink" title="如何将其他数据类型转换为Boolean布尔类型？"></a>如何将其他数据类型转换为Boolean布尔类型？</h3><p>小白做法：Boolean() ，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Boolean(1)  //true</span><br><span class="line">Boolean(&#123;&#125;)  //true</span><br></pre></td></tr></table></figure></p>
+<h3 id="老司机做法：双重取反：-x-，如："><a href="#老司机做法：双重取反：-x-，如：" class="headerlink" title="老司机做法：双重取反：!! x ，如："></a>老司机做法：双重取反：!! x ，如：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!true //false</span><br><span class="line">!!true //true</span><br><span class="line">!!1 //true</span><br></pre></td></tr></table></figure>
+<p><code>五个falsy值，</code>即转换成Boolean后为false的值：<br>0 、 NaN 、 null 、 undefined 、‘’（空字符串）</p>
+<h3 id="JS中的数据在内存中的存储方式"><a href="#JS中的数据在内存中的存储方式" class="headerlink" title="JS中的数据在内存中的存储方式"></a>JS中的数据在内存中的存储方式</h3><p>什么是内存呢，举个例子：</p>
+<p>你买一个8G 的内存条，操作系统开机即占用 512MB，Chrome 打开即占用 1G 内存， Chrome 各每个网页分配一定数量的内存， 这些内存要分给页面渲染器、网络模块、浏览器外壳和 JS 引擎（V8引擎）。<br>JS 引擎将内存分为代码区和数据区， 我们只研究数据区。 数据区分为 Stack（栈内存）和 Heap（堆内存）。 简单类型的数据（如Number，string等）直接存在 Stack 里， 复杂类型的数据（object对象）是把 Heap 地址存在 Stack 里。</p>
+<h3 id="对象存储数据的方式"><a href="#对象存储数据的方式" class="headerlink" title="对象存储数据的方式"></a>对象存储数据的方式</h3><p>对象的存储方式是在stack栈内存存储一个地址，形成对对象的引用，地址指向heap堆内存的某个位置，object是对象的引用。它在stack栈内存存的是地址，而不像其他数据类型直接把内容存在stack栈内存</p>
+<h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3><p>JS中的垃圾回收机制：如果一个对象没有被引用，它就是垃圾，将会被回收。（时间并不确定的）<br>内存泄漏就和垃圾回收机制有一定的联系：由于浏览器的一些bug，使得本应被被标记为垃圾的数据没有被标记，而这些垃圾数据占用的内存将永远被占用，哪怕你把当前页面关掉都不会被释放，除非直接关掉整个浏览器。（IE6就有此类bug）<br>解决方法：（但是要抵制IE低版本浏览器）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">window.onunload = function()&#123;</span><br><span class="line">  //需要将所有的事件监听为null，十分麻烦</span><br><span class="line">  document.body.onclick = null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="四个关于内存的题目"><a href="#四个关于内存的题目" class="headerlink" title="四个关于内存的题目"></a>四个关于内存的题目</h3><p>画内存图（解决问题的方法），只要你不画图，就会错，以不变应万变</p>
+<h4 id="题目一："><a href="#题目一：" class="headerlink" title="题目一："></a>题目一：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = a;</span><br><span class="line">b =2;</span><br><span class="line"> //请问 a 是什么？   </span><br><span class="line">//a = ? =&gt; a === 1</span><br><span class="line">使用内存图解决思路：</span><br></pre></td></tr></table></figure>
+<img src="/2019/01/30/JS里的数据类型转换/01.png" title="This is an 01 image">
+<h4 id="题目二："><a href="#题目二：" class="headerlink" title="题目二："></a>题目二：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;name:&apos;a&apos;&#125;;</span><br><span class="line">var b = a;</span><br><span class="line">b = &#123;name: &apos;b&apos;&#125;;</span><br><span class="line"> //请问 a.name 是什么？  </span><br><span class="line">//a.name === &quot; a&quot;</span><br></pre></td></tr></table></figure>
+<img src="/2019/01/30/JS里的数据类型转换/02.png" title="This is an 02 image">
+<h4 id="题目三："><a href="#题目三：" class="headerlink" title="题目三："></a>题目三：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;name: &apos;a&apos;&#125;;</span><br><span class="line">var b = a;</span><br><span class="line">b.name = &apos;b&apos;；</span><br><span class="line"> //请问 a.name 是什么？  </span><br><span class="line">//a.name === &quot; b&quot;</span><br></pre></td></tr></table></figure>
+<img src="/2019/01/30/JS里的数据类型转换/03.png" title="This is an 03 image">
+<h4 id="题目四："><a href="#题目四：" class="headerlink" title="题目四："></a>题目四：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;name:&apos;a&apos;&#125;;</span><br><span class="line">var b = a;</span><br><span class="line">b = null;</span><br><span class="line"> //请问 a是什么？  </span><br><span class="line">//a === &#123;name: &apos;a&apos;&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2019/01/30/JS里的数据类型转换/04.png" title="This is an 04 image">
+<h4 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;n:1&#125;;  </span><br><span class="line">var b = a; </span><br><span class="line">a.x = a = &#123;n:2&#125;;  </span><br><span class="line">alert(a.x);</span><br><span class="line">alert(b.x);</span><br></pre></td></tr></table></figure>
+<p><code>坑爹的面试题，a.x = a = {n:2};这句话是什么意思？浏览器看到这句话，就会问a是什么？<br>浏览器读到a.x = a = {n:2};这句话时，先看左面，再往右边看</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.x = a = &#123;n:2&#125;</span><br><span class="line">//a = &#123;n:2&#125;,此时的a指向新的地址</span><br><span class="line">//a.x还是之前的地址，并没有发生改变</span><br></pre></td></tr></table></figure></p>
+<h4 id="注：这些箭头并不是真实存在的，只是虚拟的示意"><a href="#注：这些箭头并不是真实存在的，只是虚拟的示意" class="headerlink" title="注：这些箭头并不是真实存在的，只是虚拟的示意"></a>注：这些箭头并不是真实存在的，只是虚拟的示意</h4><img src="/2019/01/30/JS里的数据类型转换/05.png" title="This is an 05 image">
+<h3 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h3><p>深拷贝：<br>var a = 1;<br>var b = a;<br>b = 2 ;<br>//请问a是什么？</p>
+<p>a的值仍然还是1。<br><code>即 b 变而不影响 a，就叫深拷贝（简单数据类型的赋值都是深拷贝）</code><br>浅拷贝<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;x:1&#125; ;</span><br><span class="line">var b = a ;</span><br><span class="line">b.x = 2;</span><br></pre></td></tr></table></figure></p>
+<p><code> 变而导致 a变，就叫浅拷贝</code></p>
+<h3 id="JS中对象的循环引用"><a href="#JS中对象的循环引用" class="headerlink" title="JS中对象的循环引用"></a>JS中对象的循环引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;name:&apos;frank&apos;&#125; ; </span><br><span class="line">obj.self = obj; </span><br><span class="line">obj.self.self.self.name; // &quot;&apos;frank&quot;</span><br></pre></td></tr></table></figure>
+<p>上述代码就可以实现对象的循环引用，原理是：为对象添加一个属性，属性值就是对象自己（在内存中就是对象引用的地址），从而达到可以通过引用该对象的self属性来引用对象本身。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/12/css布局与居中/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1114,7 +1533,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

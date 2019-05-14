@@ -269,6 +269,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/Vue组件之间的通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张哲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mamba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/29/Vue组件之间的通信/" itemprop="url">Vue组件之间的通信</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T08:36:09+08:00">
+                2019-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="父子组件："><a href="#父子组件：" class="headerlink" title="父子组件："></a>父子组件：</h4><ul>
+<li>父对子：prop传递数据</li>
+<li>子对父：$emit触发自定义事件</li>
+</ul>
+<p>如果父组件传递给子组件的是一个引用类型的数据，在子组件内部对数据源进行修改的时候，父组件会同步修改。<br>为了避免同步修改，需要对其进行深复制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">props:[&apos;obj&apos;],</span><br><span class="line">data()&#123;</span><br><span class="line">   return &#123;</span><br><span class="line">     myObj: JSON.parse(JSON.stringify(this.obj))</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="爷孙组件："><a href="#爷孙组件：" class="headerlink" title="爷孙组件："></a>爷孙组件：</h4><p>使用两次 v-on 通过爷爷爸爸通信，爸爸儿子通信实现爷孙通信</p>
+<h4 id="任意组件："><a href="#任意组件：" class="headerlink" title="任意组件："></a>任意组件：</h4><ul>
+<li>使用 eventBus = new Vue() 来通信，eventBus.$on 和 eventBus.$emit 是主要API</li>
+<li>使用 Vuex 通信</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/v-clock解决页面加载的闪烁/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1481,157 +1610,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/vue-cli项目部署到GitHub-Pages上/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张哲">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mamba">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/15/vue-cli项目部署到GitHub-Pages上/" itemprop="url">vue-cli项目部署到GitHub Pages上</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T17:50:17+08:00">
-                2019-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="1-Node-js安装-自带npm"><a href="#1-Node-js安装-自带npm" class="headerlink" title="1. Node.js安装(自带npm)"></a>1. Node.js安装(自带npm)</h4><h4 id="2-Vue-cli-安装"><a href="#2-Vue-cli-安装" class="headerlink" title="2. Vue-cli 安装"></a>2. Vue-cli 安装</h4><ul>
-<li><p>全局安装vue-cli</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g vue-cli</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入目录-初始化项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack  my-project</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd my-project</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="3-修改Vue项目配置"><a href="#3-修改Vue项目配置" class="headerlink" title="3. 修改Vue项目配置"></a>3. 修改Vue项目配置</h4><ul>
-<li>大家都知道使用npm run build进行打包，这个时候你直接打开dist ‘/‘ 下的index.html,会发现文件可以打开，但是所有的js，css，img等路径有问题是指向根目录的，此时需要修改config/index.js里的assetsPublicPath的 ‘/‘， 初始项目是 ‘/‘ 他是指向项目根目录的也是为什么会出现错误，这时改为 ‘. /‘</li>
-</ul>
-<img src="/2019/03/15/vue-cli项目部署到GitHub-Pages上/02.png" title="This is an 02 image">
-<ul>
-<li><p>将 webpack.prod.conf.js 中的 removeAttributeQuotes 改为 false</p>
-<img src="/2019/03/15/vue-cli项目部署到GitHub-Pages上/03.png" title="This is an 03 image">
-</li>
-<li><p>注释/dist/</p>
-<img src="/2019/03/15/vue-cli项目部署到GitHub-Pages上/01.png" title="This is an 01 image">
-</li>
-</ul>
-<h4 id="4-项目打包"><a href="#4-项目打包" class="headerlink" title="4. 项目打包"></a>4. 项目打包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-<h4 id="项目测试"><a href="#项目测试" class="headerlink" title="- 项目测试"></a>- 项目测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-serevr ./dist</span><br></pre></td></tr></table></figure>
-<h4 id="5-在GitHub上创建与本地项目同名的远程仓库"><a href="#5-在GitHub上创建与本地项目同名的远程仓库" class="headerlink" title="5. 在GitHub上创建与本地项目同名的远程仓库"></a>5. 在GitHub上创建与本地项目同名的远程仓库</h4><h4 id="6-将本地项目push到已经创建好的远程仓库"><a href="#6-将本地项目push到已经创建好的远程仓库" class="headerlink" title="6. 将本地项目push到已经创建好的远程仓库"></a>6. 将本地项目push到已经创建好的远程仓库</h4><p>   点击Settings进入后点击Source里的master branch得到的链接就是项目预览链接</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1682,7 +1660,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

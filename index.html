@@ -387,18 +387,9 @@
 <h5 id="1-8-Split-Components-Across-Domains"><a href="#1-8-Split-Components-Across-Domains" class="headerlink" title="1.8 Split Components Across Domains"></a>1.8 Split Components Across Domains</h5><p>把组件分散到不同的域名。</p>
 <p>把组件分散到不同的域名允许你最大化并行下载数。由于DNS查询的副作用，最佳的不同域名数是2-4。</p>
 <h5 id="1-9-Minimize-the-Number-of-iframes"><a href="#1-9-Minimize-the-Number-of-iframes" class="headerlink" title="1.9 Minimize the Number of iframes"></a>1.9 Minimize the Number of iframes</h5><p>最小化iframe的数量。</p>
-<p>iframe允许html文档被插入到父文档。</p>
-<p><iframe>优点：</iframe></p>
-<ul>
-<li>帮助解决缓慢的第三方内容的加载，如广告和徽章</li>
-<li>安全沙盒</li>
-<li><p>并行下载脚本<br><iframe>缺点：</iframe></p>
-</li>
-<li><p>即使空的也消耗（资源和时间）</p>
-</li>
-<li>阻塞了页面的onload</li>
-<li>非语义化（标签）<h5 id="1-10-No-404s"><a href="#1-10-No-404s" class="headerlink" title="1.10 No 404s"></a>1.10 No 404s</h5>不要404。</li>
-</ul>
+<p>iframe允许html文档被插入到父文档。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe&gt;优点：</span><br><span class="line"></span><br><span class="line">- 帮助解决缓慢的第三方内容的加载，如广告和徽章</span><br><span class="line">- 安全沙盒</span><br><span class="line">- 并行下载脚本</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe&gt;缺点：</span><br><span class="line"></span><br><span class="line">- 即使空的也消耗（资源和时间）</span><br><span class="line">- 阻塞了页面的onload</span><br><span class="line">- 非语义化（标签）</span><br></pre></td></tr></table></figure>
+<h5 id="1-10-No-404s"><a href="#1-10-No-404s" class="headerlink" title="1.10 No 404s"></a>1.10 No 404s</h5><p>不要404。</p>
 <p>http请求是昂贵的，所以发出http请求但获得没用的响应（如404）是完全不必要的，并且会降低用户体验。</p>
 <p>一些网站会有特别的404页面提高用户体验，但这仍然会浪费服务器资源。特别坏的是当链接指向外部js但却得到404结果。这样首先会降低（占用）并行下载数，其次浏览器可能会把404响应体当作js来解析，试图从里面找出可用的东西。</p>
 <h4 id="2-Server"><a href="#2-Server" class="headerlink" title="2. Server"></a>2. Server</h4><h5 id="2-1-Use-a-Content-Delivery-Network"><a href="#2-1-Use-a-Content-Delivery-Network" class="headerlink" title="2.1 Use a Content Delivery Network"></a>2.1 Use a Content Delivery Network</h5><p>使用CDN。</p>

@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容： JSON.stringify(obj) ：接受一个 JavaScript 对象并将其转换为一个 JSON 字符串。 JSON.parse(string) ： 接受一个 JSON 字符串并将其转换成一个 JavaScript 对象。  1234567891011var a=&amp;#123;&amp;quot;name&amp;qu">
+<meta name="description" content="（1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。  （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数  （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。  （4）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JSON对象和字符串之间的相互转换 ">
-<meta property="og:url" content="http://yoursite.com/2019/05/06/JSON对象和字符串之间的相互转换/index.html">
+<meta property="og:title" content="web性能优化简单总结">
+<meta property="og:url" content="http://yoursite.com/2019/06/13/web性能优化简单总结/index.html">
 <meta property="og:site_name" content="mamba">
-<meta property="og:description" content="所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容： JSON.stringify(obj) ：接受一个 JavaScript 对象并将其转换为一个 JSON 字符串。 JSON.parse(string) ： 接受一个 JSON 字符串并将其转换成一个 JavaScript 对象。  1234567891011var a=&amp;#123;&amp;quot;name&amp;qu">
+<meta property="og:description" content="（1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。  （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数  （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。  （4）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-06T02:21:58.257Z">
+<meta property="og:updated_time" content="2019-06-13T05:46:27.479Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JSON对象和字符串之间的相互转换 ">
-<meta name="twitter:description" content="所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容： JSON.stringify(obj) ：接受一个 JavaScript 对象并将其转换为一个 JSON 字符串。 JSON.parse(string) ： 接受一个 JSON 字符串并将其转换成一个 JavaScript 对象。  1234567891011var a=&amp;#123;&amp;quot;name&amp;qu">
+<meta name="twitter:title" content="web性能优化简单总结">
+<meta name="twitter:description" content="（1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。  （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数  （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。  （4）">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/06/JSON对象和字符串之间的相互转换/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/13/web性能优化简单总结/">
 
 
 
 
 
-  <title>JSON对象和字符串之间的相互转换  | mamba</title>
+  <title>web性能优化简单总结 | mamba</title>
   
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/JSON对象和字符串之间的相互转换/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/web性能优化简单总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张哲">
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JSON对象和字符串之间的相互转换 </h1>
+          <h1 class="post-title" itemprop="name headline">web性能优化简单总结</h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T09:48:17+08:00">
-                2019-05-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T13:45:14+08:00">
+                2019-06-13
               </time>
             
 
@@ -339,13 +339,23 @@
       
 
       
-        <h4 id="所有现代浏览器都支持-JSON-对象，有两个非常有用的方法来处理-JSON-格式的内容："><a href="#所有现代浏览器都支持-JSON-对象，有两个非常有用的方法来处理-JSON-格式的内容：" class="headerlink" title="所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容："></a>所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容：</h4><ul>
-<li>JSON.stringify(obj) ：接受一个 JavaScript 对象并将其转换为一个 JSON 字符串。</li>
-<li>JSON.parse(string) ： 接受一个 JSON 字符串并将其转换成一个 JavaScript 对象。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var a=&#123;&quot;name&quot;:&quot;tom&quot;,&quot;sex&quot;:&quot;男&quot;,&quot;age&quot;:&quot;22&quot;&#125;;</span><br><span class="line"> </span><br><span class="line">var b=&apos;&#123;&quot;name&quot;:&quot;Mike&quot;,&quot;sex&quot;:&quot;女&quot;,&quot;age&quot;:&quot;22&quot;&#125;&apos;;</span><br><span class="line"> </span><br><span class="line">var aToStr=JSON.stringify(a);</span><br><span class="line"> </span><br><span class="line">var bToObj=JSON.parse(b);</span><br><span class="line"> </span><br><span class="line">console.log(typeof(aToStr)); ?//string</span><br><span class="line"> </span><br><span class="line">console.log(typeof(bToObj));//object</span><br></pre></td></tr></table></figure>
-<p>这些方法通常用在对象上，但它们也可以在数组上使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">onst myArr = [&apos;white&apos;, &apos;yellow&apos;, &apos;red&apos;];</span><br><span class="line"> </span><br><span class="line">const myArrStr = JSON.stringify(myArr);</span><br><span class="line"> </span><br><span class="line">console.log(myArrStr);</span><br><span class="line">// &quot;[&quot;white&quot;,&quot;yellow&quot;,&quot;red&quot;]&quot;</span><br><span class="line"> </span><br><span class="line">console.log(JSON.parse(myArrStr));</span><br><span class="line">// [&quot;white&quot;,&quot;yellow&quot;,&quot;red&quot;]</span><br></pre></td></tr></table></figure>
+        <pre><code>（1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。
+
+（2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
+
+（3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。
+
+（4） 当需要设置的样式很多时设置className而不是直接操作style。
+
+（5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。
+
+（6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。
+
+（7） 图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。
+
+（8） 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。
+对普通的网站有一个统一的思路，就是尽量向前端优化、减少数据库操作、减少磁盘IO。向前端优化指的是，在不影响功能和体验的情况下，能在浏览器执行的不要在服务端执行，能在缓存服务器上直接返回的不要到应用服务器，程序能直接取得的结果不要到外部取得，本机内能取得的数据不要到远程取，内存能取到的不要到磁盘取，缓存中有的不要去数据库查询。减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。程序优化永远要优化慢的部分，换语言是无法“优化”的
+</code></pre>
       
     </div>
     
@@ -369,8 +379,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/05/求数组中的最大值和最小值/" rel="next" title="求数组中的最大值和最小值">
-                <i class="fa fa-chevron-left"></i> 求数组中的最大值和最小值
+              <a href="/2019/06/02/Ajax和JSONP-二/" rel="next" title="Ajax和JSONP(二)">
+                <i class="fa fa-chevron-left"></i> Ajax和JSONP(二)
               </a>
             
           </div>
@@ -378,10 +388,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/08/防抖函数/" rel="prev" title="防抖函数">
-                防抖函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -433,17 +439,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -501,22 +498,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#所有现代浏览器都支持-JSON-对象，有两个非常有用的方法来处理-JSON-格式的内容："><span class="nav-number">1.</span> <span class="nav-text">所有现代浏览器都支持 JSON 对象，有两个非常有用的方法来处理 JSON 格式的内容：</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

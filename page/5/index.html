@@ -269,6 +269,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/06/HTML常用的几个标签/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张哲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mamba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/06/HTML常用的几个标签/" itemprop="url">HTML常用的几个标签</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-06T14:53:46+08:00">
+                2019-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-iframe"><a href="#1-iframe" class="headerlink" title="1.iframe"></a>1.iframe</h2><p>HTML内联框架元素iframe标签表示嵌套的浏览上下文，有效的将另一个HTML页面嵌入到当前页面中</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p><code>frameborder</code></p>
+<ul>
+<li>取值为1时（默认值），告诉浏览器在当前iframe与其他iframe之间绘制边框，取0时则无需绘制<br><code>name</code></li>
+<li>嵌入的浏览上下文（框架）的名称。该名称可以用作a标签，form标签的target属性值，或input 标签和button标签的formtaget属性值。<br><code>height</code></li>
+<li>以CSS像素格式HTML 4.01，或像素格式HTML5，或百分比格式指定frame的高度。<br><code>width</code> </li>
+<li>以CSS像素格式HTML 4.01，或像素格式HTML5，或百分比格式指定frame的宽度。<br><code>src</code></li>
+<li>嵌套页面的URL地址。使用遵守同源策略的  ‘about:blank’ 来嵌套空白页。<h2 id="2-a标签"><a href="#2-a标签" class="headerlink" title="2.a标签"></a>2.a标签</h2>HTML中a(或锚元素) 可以创建一个到其他网页、文件、同一页面内的位置、电子邮件地址或任何其他URL的超链接。<h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><h4 id="1-href"><a href="#1-href" class="headerlink" title="1.href"></a>1.href</h4><code>没有href属性</code></li>
+<li>这是没有意义，本身和span没有区别。<br><code>href=”qq.com”<code></code></code></li>
+<li>打开的是一个相对文件路径，并不会打开网址。<br><code>href=”<a href="http://qq.com&quot;" target="_blank" rel="noopener">http://qq.com&quot;</a></code></li>
+<li>打开是一个网址。<br><code>href=”//qq.com”</code></li>
+<li>这是无协议，将会自动识别并继承在它之前的协议。若是直接打开，识别的是file协议，若是指定了协议，例如localhost:8080//qq.com，则会识别http协议，从而打开qq网址。<br><code>href=”javascript:;”</code></li>
+<li>这是伪协议，这种写法常用于一些奇怪的需求。<br>不使用href，就点击不了。<br>使用href=””则会刷新本页面。<br>使用href=”#”产生锚点，会调到页面最上端。<br>使用href=”javascript:;”，不产生任何动作。<br>使用href=”javascript:alert(1)”，是存在可执行的。<br><code>href=”?name=mamamoo”</code></li>
+<li>这种情况下表示会在url后面添加?name=mamamoo并且发起了一个get请求。<br><code>href=”#xxx”</code></li>
+<li>在url后面添加#xxx添加一个锚点，并不会发起请求。<h4 id="2-target"><a href="#2-target" class="headerlink" title="2.target"></a>2.target</h4><code>“_blank”</code></li>
+<li>新开一个空白页，打开网址。<br><code>“_self”</code></li>
+<li>在自身窗口打开网址。<br><code>“_parent”</code></li>
+<li>在父级窗口打开网址。<br><code>“_top”</code></li>
+<li>在最上级窗口打开网址。<br>如：我用iframe在A窗口嵌套了B窗口，在B窗口中嵌套C窗口。那么C窗口的父级指的是B，最上级指的是A。<h4 id="3-download"><a href="#3-download" class="headerlink" title="3.download"></a>3.download</h4></li>
+<li>可实现下载操作<h2 id="3-input标签"><a href="#3-input标签" class="headerlink" title="3.input标签"></a>3.input标签</h2>HTML中input元素用于为基于Web的表单创建交互式控件，以便接受来自用户的数据。<h3 id="属性-2"><a href="#属性-2" class="headerlink" title="属性"></a>属性</h3><h4 id="1-name"><a href="#1-name" class="headerlink" title="1.name"></a>1.name</h4></li>
+<li>控件的名称，与表单数据一起提交。<h4 id="2-value"><a href="#2-value" class="headerlink" title="2.value"></a>2.value</h4>控件的初始值. 此属性是可选的,除非type 属性是radio或checkbox。注意，当重新加载页面时，如果在重新加载之前更改了值，Gecko和IE将忽略HTML源代码中指定的值。<h4 id="3-checked"><a href="#3-checked" class="headerlink" title="3.checked"></a>3.checked</h4></li>
+<li>如果该元素的type属性的值为radio或者checkbox,则该布尔属性的存在与否表明了该控件是否是默认选择状态.<h4 id="4-disabled"><a href="#4-disabled" class="headerlink" title="4.disabled"></a>4.disabled</h4></li>
+<li>这个布尔属性表示此表单控件不可用。<h4 id="5-type"><a href="#5-type" class="headerlink" title="5.type"></a>5.type</h4><code>button</code></li>
+<li>无缺省行为按钮。<br><code>checkbox</code></li>
+<li>复选框。必须使用 value 属性定义此控件被提交时的值。使用 checked 属性指示控件是否被选择。<br><code>password</code></li>
+<li>一个值被遮盖的单行文本字段。使用 maxlength 指定可以输入的值的最大长度 。<br><code>radio</code></li>
+<li>单选按钮。必须使用 value 属性定义此控件被提交时的值。使用checked 必须指示控件是否缺省被选择。在同一个”单选按钮组“中，所有单选按钮的 name 属性使用同一个值； 一个单选按钮组中是，同一时间只有一个单选按钮可以被选择。<br><code>submit</code></li>
+<li>用于提交表单的按钮。<br><code>text</code></li>
+<li>默认的类型，单行字段；换行会将自动从输入的值中移除。<h2 id="4-form标签"><a href="#4-form标签" class="headerlink" title="4.form标签"></a>4.form标签</h2>HTML form 元素 表示了文档中的一个区域，这个区域包含有交互控制元件，用来向web服务器提交信息。<h3 id="属性-3"><a href="#属性-3" class="headerlink" title="属性"></a>属性</h3><h4 id="1-action"><a href="#1-action" class="headerlink" title="1.action"></a>1.action</h4></li>
+<li>一个处理这个form信息的程序所在的URL。这个值可以被 button或者 input 元素中的 formaction 属性重载（覆盖）。<h4 id="2-method"><a href="#2-method" class="headerlink" title="2.method"></a>2.method</h4></li>
+<li>a标签和form标签都是跳转页面，不过a标签是get请求，form是post请求。get是获取内容，post是提交内容。<h4 id="3-name"><a href="#3-name" class="headerlink" title="3.name"></a>3.name</h4></li>
+<li>这个form的名字。标签要有name属性，不然是无法在请求中得到。<h4 id="4-target"><a href="#4-target" class="headerlink" title="4.target"></a>4.target</h4></li>
+<li>form标签的target属性和a标签是一样。<h2 id="5-button标签"><a href="#5-button标签" class="headerlink" title="5.button标签"></a>5.button标签</h2>HTML中button 元素表示一个可点击的按钮，可以用在表单或文档其它需要使用简单标准按钮的地方。<br>属性<h4 id="1-name-1"><a href="#1-name-1" class="headerlink" title="1.name"></a>1.name</h4></li>
+<li>button的名称，与表单数据一起提交。<h4 id="2-value-1"><a href="#2-value-1" class="headerlink" title="2.value"></a>2.value</h4></li>
+<li>button的初始值。它定义的值与表单数据的提交按钮相关联。当表单中的数据被提交时，这个值便以参数的形式被递送至服务器。<h4 id="3-type"><a href="#3-type" class="headerlink" title="3.type"></a>3.type</h4><code>submit</code></li>
+<li>此按钮提交表单数据给服务器。<br><code>reset</code></li>
+<li>此按钮重置所有组件为初始值。<br><code>button</code></li>
+<li>此按钮没有默认行为。它可以有与元素事件相关的客户端脚本，当事件出现时可触发。<br><code>menu</code></li>
+<li>此按钮打开一个由指定menu元素进行定义的弹出菜单。<h2 id="6-select标签"><a href="#6-select标签" class="headerlink" title="6.select标签"></a>6.select标签</h2>HTML中select标签表示其提供选项菜单的控制。<h3 id="属性-4"><a href="#属性-4" class="headerlink" title="属性"></a>属性</h3><h4 id="1-multiple"><a href="#1-multiple" class="headerlink" title="1. multiple"></a>1. multiple</h4></li>
+<li>支持多选。<h4 id="2-disabled"><a href="#2-disabled" class="headerlink" title="2. disabled"></a>2. disabled</h4></li>
+<li>选项中标记了disabled是无法被选中。<h4 id="3-selected"><a href="#3-selected" class="headerlink" title="3. selected"></a>3. selected</h4></li>
+<li>默认选中的选项。<h2 id="7-table标签"><a href="#7-table标签" class="headerlink" title="7.table标签"></a>7.table标签</h2>HTML的table标签表示表格数据,即通过二维数据表表示的信息。浏览器会按照thead、tbody、tfoot顺序来进行显示，不按照写的顺序显示</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/05/HTML相关内容(1)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -773,7 +935,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

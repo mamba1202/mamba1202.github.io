@@ -269,6 +269,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/理解this/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张哲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mamba">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/23/理解this/" itemprop="url">理解this</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T23:00:28+08:00">
+                2019-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/MVC简述/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1704,142 +1823,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/用原生JavaScript实现类jQuery效果/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="张哲">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mamba">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/15/用原生JavaScript实现类jQuery效果/" itemprop="url">用原生JavaScript实现类jQuery效果</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-15T13:20:29+08:00">
-                2019-02-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="这篇文章将用原生JS实现jQuery的元素选择、添加类、获取-设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。"><a href="#这篇文章将用原生JS实现jQuery的元素选择、添加类、获取-设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。" class="headerlink" title="这篇文章将用原生JS实现jQuery的元素选择、添加类、获取/设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。"></a>这篇文章将用原生JS实现jQuery的元素选择、添加类、获取/设置文字这几个方法，当然jQuery的实际实现比这个要复杂的多，本文不做深究。</h3><h4 id="1、实现元素选择"><a href="#1、实现元素选择" class="headerlink" title="1、实现元素选择"></a>1、实现元素选择</h4><ul>
-<li>首先我们需要认识到的是，jQuery实际上就是一个函数，所以最基本的结构应该是这样的：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">windos.jQuery = function()&#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>window.$ = window.jQuery // 实现类jQuery写法 $()</p>
-<ul>
-<li>其次我们需要判断通过该函数传进来的参数是选择器还是DOM节点：是选择器的话，需要使用<code>document.querySelectorAll()</code>来获取元素，然后返回一个对象用来后续的操作；如果是DOM节点，为了保持操作的一致，也需要将其变为一个对象；如果先用一个变量获取DOM的集合，再将其以参数传入，也会返回一个对象（<code>var boxes = document.getElementsByTagName(‘div’)</code> ，再将boxes传入，进入最后一个分支）。具体代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = function(nodeOrSelector)&#123;</span><br><span class="line">  let nodes = &#123;&#125;</span><br><span class="line">  // 传入参数为选择器</span><br><span class="line">  if (typeof nodeOrSelector === &apos;string&apos;)&#123;</span><br><span class="line">     let temp = document.querySelectorAll(nodeOrSelector)</span><br><span class="line">     for(let i = 0 ; i &lt; temp.length; i++)&#123;</span><br><span class="line">        nodes[i] = temp[i]</span><br><span class="line">     &#125;</span><br><span class="line">    nodes[&apos;length&apos;] = temp.length</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  // 传入参数为节点</span><br><span class="line">  else if(nodeOrSelector instanceof Node)&#123;</span><br><span class="line">    nodes=&#123;</span><br><span class="line">      0:nodeOrSelector,</span><br><span class="line">      length:1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> // 传入参数为DOM节点集合</span><br><span class="line">  else&#123;</span><br><span class="line">    for(let i = 0;i&lt;nodeOrSelector.length;i++)&#123;</span><br><span class="line">      nodes[i] = nodeOrSelector[i]</span><br><span class="line">    &#125;</span><br><span class="line">    nodes[&apos;length&apos;] = nodeOrSelector.length</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return nodes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="2、实现获取-设置元素的文本"><a href="#2、实现获取-设置元素的文本" class="headerlink" title="2、实现获取/设置元素的文本"></a>2、实现获取/设置元素的文本</h4><p>封装一个<code>Text()</code>函数，操作的是转化过的<code>nodes</code>对象，如果不传参，则获取元素的文本，如果传参（参数需要是字符串），设置元素的文本为所传的参数（其中，如果元素是多个节点的集合，那么会为所有的元素都设置文本）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">nodes.Text = function(text)&#123;</span><br><span class="line">   if(text === undefined)&#123;</span><br><span class="line">     let texts = []</span><br><span class="line">     for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">      texts[i] = nodes[i].textContent</span><br><span class="line">     &#125;</span><br><span class="line">     return texts</span><br><span class="line">   &#125;else&#123;</span><br><span class="line">     for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">      nodes[i].textContent = text</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="3、实现为元素添加-删除类"><a href="#3、实现为元素添加-删除类" class="headerlink" title="3、实现为元素添加/删除类"></a>3、实现为元素添加/删除类</h4><p>封装一个addClass()函数，操作的转化过的nodes对象，传入的参数需要是一个对象，对象的键名是需要操作的类，对象的键值是操作类型（如<code>{‘red’:true,’green’:false}</code> 表示添加类名为<code>red</code>的类，同时删除类名为<code>green</code>的类）</p>
-<ul>
-<li>首先使用<code>for in</code>循环遍历传入的参数，然后使用<code>for循环遍历nodes</code>节点，对每一个元素都要进行操作，判断键值是<code>true还是false</code>，前者则添加类，后者则删除类：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nodes.addClass = function(classes)&#123;</span><br><span class="line">    for(let key in classes)&#123;</span><br><span class="line">      for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">        if(classes[key])&#123;</span><br><span class="line">          nodes[i].classList.add(key)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          nodes[i].classList.remove(key)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>观察上面的代码，发现关于<code>if判断语句</code>中的两个分支有相似的地方，而只要有相似的代码，就有优化的空间，所以进行下面的优化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nodes.addClass = function(classes)&#123;</span><br><span class="line">    for(let key in classes)&#123;</span><br><span class="line">      for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">        let methodName = classes[key] ? &apos;add&apos; : &apos;remove&apos;</span><br><span class="line">        nodes[i].classList[methodName](key)</span><br><span class="line">      &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="4、完整代码"><a href="#4、完整代码" class="headerlink" title="4、完整代码"></a>4、完整代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = function(nodeOrSelector) &#123;</span><br><span class="line">  let nodes = &#123;&#125;</span><br><span class="line">  if (typeof nodeOrSelector === &apos;string&apos;) &#123;</span><br><span class="line">    let temp = document.querySelectorAll(nodeOrSelector)</span><br><span class="line">    for (let i = 0; i &lt; temp.length; i++) &#123;</span><br><span class="line">      nodes[i] = temp[i]</span><br><span class="line">    &#125;</span><br><span class="line">    nodes[&apos;length&apos;] = temp.length</span><br><span class="line">    console.log(1)</span><br><span class="line"></span><br><span class="line">  &#125; else if (nodeOrSelector instanceof Node) &#123;</span><br><span class="line">    nodes = &#123;</span><br><span class="line">      0: nodeOrSelector,</span><br><span class="line">      length: 1</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(2)</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    for (let i = 0; i &lt; nodeOrSelector.length; i++) &#123;</span><br><span class="line">      nodes[i] = nodeOrSelector[i]</span><br><span class="line">    &#125;</span><br><span class="line">    nodes[&apos;length&apos;] = nodeOrSelector.length</span><br><span class="line">    console.log(3)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  nodes.Text = function(text) &#123;</span><br><span class="line">    if (text === undefined) &#123;</span><br><span class="line">      let texts = []</span><br><span class="line">      for (let i = 0; i &lt; nodes.length; i++) &#123;</span><br><span class="line">        texts[i] = nodes[i].textContent</span><br><span class="line">      &#125;</span><br><span class="line">      return texts</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      for (let i = 0; i &lt; nodes.length; i++) &#123;</span><br><span class="line">        nodes[i].textContent = text</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  nodes.addClass = function(classes) &#123;</span><br><span class="line">    for (let key in classes) &#123;</span><br><span class="line">      for (let i = 0; i &lt; nodes.length; i++) &#123;</span><br><span class="line">        let methodName = classes[key] ? &apos;add&apos; : &apos;remove&apos;</span><br><span class="line">        nodes[i].classList[methodName](key)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  return nodes</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">window.$ =jQuery</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1890,7 +1873,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
